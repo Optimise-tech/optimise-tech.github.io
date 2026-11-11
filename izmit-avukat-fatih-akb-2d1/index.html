@@ -266,6 +266,77 @@ body{font-size:17px;line-height:1.62;font-feature-settings:normal}
   .mbar a:first-child{background:var(--acc)}
   .dark .btn{width:100%}
 }
+/* === Yumuşak revizyon (2026-11-11): köşeli/sert görünüm yerine sakin, güven veren düzen.
+   Referans: Gün + Partners, Moroğlu Arseven, Cooley, Hengeler Mueller — hap butonlar, ince serif başlıklar,
+   lacivert/sıcak krem palet, yumuşak köşeli görseller ve kartlar, siyah çizgiler yerine açık ayraçlar. === */
+:root{--bg:#f7f4ef;--surface:#fffdfa;--ink:#1f2638;--muted:#5c6273;--line:#e4dfd6;--acc:#25365c;--acc-ink:#fbf9f5;--soft:#ede8e0;--gold:#a3814b;--r:22px;--rb:999px}
+body{background:var(--bg);color:var(--ink)}
+.hd{background:color-mix(in srgb,var(--bg) 82%,transparent);-webkit-backdrop-filter:saturate(1.3) blur(16px);backdrop-filter:saturate(1.3) blur(16px)}
+.hd-brand{font-weight:400;color:var(--ink)}
+.btn{border-radius:999px;padding:0 26px;font-weight:500;letter-spacing:0}
+.btn-sm{padding:0 20px}
+.btn-p{background:var(--acc);color:var(--acc-ink);box-shadow:0 6px 18px -8px color-mix(in srgb,var(--acc) 70%,transparent)}
+.btn-p:hover{background:color-mix(in srgb,var(--acc) 86%,#000)}
+.btn-s{box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--ink) 25%,transparent)}
+.btn-s:hover{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+.tl{text-decoration-color:var(--gold);text-decoration-thickness:1.5px}
+.kick{color:var(--gold)}
+.hero h1{font-weight:300;letter-spacing:-.02em;color:var(--ink)}
+.ph-img{border-radius:var(--r)}
+.ph-img img{filter:saturate(.92) contrast(1.02)}
+.strip{border-top:0;background:var(--surface);border-radius:var(--r);padding:6px 28px 22px;box-shadow:0 0 0 1px var(--line),0 18px 40px -28px rgba(31,38,56,.35)}
+.strip>div{padding-top:18px}
+.sh{border-top:1px solid var(--line)}
+.sh .lab b{color:var(--gold)}
+.sh h2{font-weight:300}
+.ledger{border-top:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.ledger li{display:block;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:28px 30px 30px;transition:border-color .2s,box-shadow .2s,transform .2s}
+.ledger li:hover{border-color:color-mix(in srgb,var(--acc) 30%,var(--line));box-shadow:0 18px 40px -26px rgba(31,38,56,.35)}
+.ledger .n{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;background:color-mix(in srgb,var(--acc) 8%,transparent);color:var(--acc);font-size:14px;margin-bottom:18px}
+.ledger h3{font-size:clamp(23px,2.2vw,28px);margin-bottom:10px}
+.ledger p{font-size:16.5px}
+.prof{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:40px 44px}
+.prof:first-child{padding-top:40px}
+.prof .role{color:var(--gold)}
+.facts{border-top:0}
+.facts>div{border-bottom:1px solid var(--line)}
+.facts>div:last-child{border-bottom:0}
+.steps{border-top:0;display:grid;gap:12px}
+.steps li{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px 26px;grid-template-columns:52px minmax(0,1fr);align-items:start}
+.steps li::before{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--acc);color:var(--acc-ink);font:400 20px/1 var(--font-d)}
+.bring ul{border-top:0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:6px 26px}
+.bring li:last-child{border-bottom:0}
+.faq{border-top:0;display:grid;gap:10px}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:0 26px;transition:border-color .2s}
+.faq details[open]{border-color:color-mix(in srgb,var(--acc) 25%,var(--line))}
+.sec.dark{background:#1f2a44;color:#f3f1ec;--line:rgba(243,241,236,.16);--muted:#b9bfcc;border-radius:36px 36px 0 0}
+.dark .sh{border-top-color:rgba(243,241,236,.2)}
+.dark .sh .lab b{color:#d4b98a}
+.ct dl{border-top:0;background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:var(--r);padding:6px 26px}
+.ct dl>div:last-child{border-bottom:0}
+.ct .map{border-radius:var(--r);filter:grayscale(.2) contrast(.98)}
+.dark .btn-p{background:#f3f1ec;color:#1f2a44;box-shadow:none}
+.dark .btn-s{box-shadow:inset 0 0 0 1px rgba(243,241,236,.45)}
+.ft{background:#1f2a44;color:#b9bfcc}
+.ft-in{border-top-color:rgba(243,241,236,.16)}
+@media (max-width:960px){
+  .strip{padding:4px 22px 6px}
+  .strip>div{padding:16px 0}
+  .strip>div:last-child{border-bottom:0}
+  .ledger{grid-template-columns:1fr}
+  .prof{padding:30px 26px}
+  .hero-split .hero-f{grid-row:auto}
+}
+@media (max-width:720px){
+  .ledger li{padding:24px 22px 26px}
+  .steps li{grid-template-columns:44px minmax(0,1fr);padding:20px}
+  .steps li::before{width:36px;height:36px;font-size:17px}
+  .faq details{padding:0 20px}
+  .sec.dark{border-radius:28px 28px 0 0}
+  .mbar{left:12px;right:12px;bottom:12px;border-radius:999px;padding:6px;background:color-mix(in srgb,var(--surface) 92%,transparent);box-shadow:0 0 0 1px var(--line),0 12px 32px -8px rgba(31,38,56,.3)}
+  .mbar a{border-radius:999px}
+  .mbar a:first-child{background:var(--acc);color:var(--acc-ink)}
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "LegalService", "name": "İzmit Avukat Fatih Akbaş", "telephone": "+905530484169", "address": {"@type": "PostalAddress", "streetAddress": "Karabaş, Şht. Musa Sk. NO:14, 41000 İzmit/Kocaeli", "addressLocality": "İzmit", "addressRegion": "Kocaeli", "addressCountry": "TR"}, "areaServed": "Kocaeli", "knowsAbout": ["Aile ve Boşanma Hukuku", "İş Hukuku", "Kira Hukuku", "Miras Hukuku"]}</script>
 </head>
@@ -285,7 +356,7 @@ body{font-size:17px;line-height:1.62;font-feature-settings:normal}
 <h1>İzmit Avukat Fatih Akbaş</h1></div>
 <div class="hero-s"><p class="lede">Aile, iş, kira ve miras hukuku alanlarında danışmanlık ve dava takibi.</p>
 <div class="cta"><a class="btn btn-p" href="tel:+905530484169">Büroyu arayın</a><a class="tl" href="https://wa.me/905530484169?text=Merhaba%2C%20%C4%B0zmit%20Avukat%20Fatih%20Akba%C5%9F%20web%20sitesinden%20yaz%C4%B1yorum.%20%C3%96n%20g%C3%B6r%C3%BC%C5%9Fme%20i%C3%A7in%20randevu%20almak%20istiyorum.">WhatsApp ile yazın</a></div></div>
-<figure class="hero-f"><div class="ph-img"><img src="https://images.unsplash.com/photo-1780445333332-3abb7dde9ad1?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;w=480&amp;h=640" srcset="https://images.unsplash.com/photo-1780445333332-3abb7dde9ad1?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;w=480&amp;h=640 1x, https://images.unsplash.com/photo-1780445333332-3abb7dde9ad1?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;w=960&amp;h=1280 2x" width="480" height="640" alt="Sütunlu bir taş cephede sert gölgeler" fetchpriority="high"></div><p class="photo-note">Görseller örnektir; yayında sizin fotoğraflarınız kullanılır.</p></figure>
+<figure class="hero-f"><div class="ph-img"><img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;w=480&amp;h=640" srcset="https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;w=480&amp;h=640 1x, https://images.unsplash.com/photo-1505664194779-8beaceb93744?auto=format&amp;fit=crop&amp;crop=entropy&amp;q=70&amp;w=960&amp;h=1280 2x" width="480" height="640" alt="Ahşap raflı bir hukuk kütüphanesi" fetchpriority="high"></div><p class="photo-note">Görseller örnektir; yayında sizin fotoğraflarınız kullanılır.</p></figure>
 <dl class="strip"><div><dt>Büro</dt><dd>Karabaş, İzmit / Kocaeli<br><a href="#iletisim">Adres ve harita</a></dd></div>
 <div><dt>Çalışma saatleri</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">Hafta içi 09:00–18:00</span></dd></div>
 <div><dt>Görüşmeler</dt><dd>Randevu ile yapılır.<br><a href="tel:+905530484169">0553 048 41 69</a></dd></div></dl>
