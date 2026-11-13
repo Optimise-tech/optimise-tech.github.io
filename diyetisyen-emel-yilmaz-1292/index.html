@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!--
+TASARIM PLANI (diyetisyen, 14.11.2026)
+Renkler (oklch, :root): zemin "su yeşili kâğıt" (soğuk, kremden uzak), yaprak (bant zemini),
+mürekkep (koyu zeytin-siyah metin), söğüt (ikincil metin), zeytin (tek vurgu), çizgi.
+Yazı: Literata (başlık, okuma için çizilmiş, sakin) + Onest (gövde ve arayüz). Avukattan
+(Source Serif 4 + IBM Plex Sans) ve diğer mesleklerden farklı eşleşme.
+Düzen: sola yaslı başlık + sağda künye (adres, görüşme biçimi, saat) bloğu; kart yok, ince çizgi ve boşluk.
+Akılda kalıcı öğe: "İlk görüşme nasıl geçer" bölümünde dakikalara bölünmüş cetvel. Adımlar gerçekten
+sıralı olduğu için numaralı; masaüstünde süreye orantılı yatay şerit, mobilde dikey cetvel.
+Eleştiri: stok fotoğraf, salata, harita iframe'i (üçüncü taraf çerez), kaydırma animasyonu, italik vurgu,
+eyebrow etiket, ok işaretli bağlantı, hap düğme, gölge yok. Ad kısa ("Diyet") ya da çok uzun gelirse h1
+etkilenmez (h1 meslek + yer söyler); ad yalnız künye, başlık çubuğu ve hakkında bölümünde, kırılabilir.
+Mevzuat: yorum, yıldız, fiyat, kilo/sonuç vaadi, öncesi-sonrası, "en iyi" yok; alt bilgide son güncelleme.
+-->
+<title>Dyt. Emel Yılmaz | Diyetisyen, Bakırköy</title>
+<meta name="description" content="Dyt. Emel Yılmaz, Bakırköy. Beslenme ve diyet danışmanlığı, yüz yüze ve online görüşme. Adres, çalışma saatleri ve randevu.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Dyt. Emel Yılmaz | Diyetisyen, Bakırköy">
+<meta property="og:description" content="Dyt. Emel Yılmaz, Bakırköy. Beslenme ve diyet danışmanlığı, yüz yüze ve online görüşme.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,500;7..72,600&family=Hanken+Grotesk:wght@400;500;600&display=swap">
+<style>
+:root{
+  --zemin:oklch(0.972 0.007 150);
+  --yaprak:oklch(0.932 0.024 135);
+  --murekkep:oklch(0.25 0.025 140);
+  --sogut:oklch(0.43 0.03 138);
+  --zeytin:oklch(0.45 0.095 125);
+  --zeytin-koyu:oklch(0.37 0.08 125);
+  --cizgi:oklch(0.83 0.025 135);
+  --koyu-cizgi:oklch(0.42 0.03 140);
+  --s1:oklch(0.45 0.095 125);--s2:oklch(0.58 0.09 125);--s3:oklch(0.70 0.075 125);--s4:oklch(0.81 0.055 125);
+  --serif:"Literata",Georgia,serif;
+  --sans:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --olcu:68ch;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--zemin);color:var(--murekkep);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;margin:0;text-wrap:balance;letter-spacing:-.01em}
+p,ol,ul,dl,dd{margin:0}
+ol,ul{padding:0;list-style:none}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--zeytin)}
+:focus-visible{outline:2px solid var(--zeytin);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:8px;top:8px;z-index:100;background:var(--murekkep);color:var(--zemin);padding:8px 12px}
+.demo-bar{font:500 13px/1.4 var(--sans);background:var(--murekkep);color:var(--zemin);padding:8px 0}
+.ph{text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+/* başlık çubuğu */
+.hd{border-bottom:1px solid var(--cizgi)}
+.hd-in{display:flex;align-items:center;gap:28px;min-height:68px}
+.hd-ad{font:600 19px/1.2 var(--serif);text-decoration:none;min-width:0;max-width:340px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hd-nav{display:flex;gap:22px;margin-left:auto;font-size:15px}
+.hd-nav a{text-decoration:none;color:var(--sogut)}
+.hd-nav a:hover{color:var(--murekkep);text-decoration:underline}
+.hd-tel{font-weight:600;font-size:15px;text-decoration:none;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+/* giriş */
+.giris{padding:72px 0 80px}
+.giris-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:64px;align-items:end}
+.giris h1{font-size:clamp(2.5rem,1.4rem + 3.6vw,4.6rem);font-weight:600;max-width:13ch;animation:gel .7s ease-out both}
+.giris .sunus{margin-top:28px;font-size:19px;max-width:44ch;color:var(--sogut)}
+.eylem{margin-top:36px;display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
+.btn{display:inline-block;background:var(--zeytin);color:var(--zemin);font-weight:600;font-size:16px;padding:14px 22px;border-radius:3px;text-decoration:none}
+.btn:hover{background:var(--zeytin-koyu);color:var(--zemin)}
+.eylem .ya{color:var(--sogut);font-size:16px}
+.eylem .ya a{color:var(--murekkep);font-weight:600;font-variant-numeric:tabular-nums}
+@keyframes gel{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+.kunye{border-top:3px solid var(--murekkep);font-size:16px}
+.kunye .ad{font:600 22px/1.25 var(--serif);padding:16px 0 4px;overflow-wrap:anywhere}
+.kunye .unvan{color:var(--sogut);padding-bottom:14px;overflow-wrap:anywhere}
+.kunye dl div{display:grid;grid-template-columns:6.5em minmax(0,1fr);gap:12px;padding:12px 0;border-top:1px solid var(--cizgi)}
+.kunye dt{color:var(--sogut)}
+.kunye dd{overflow-wrap:anywhere}
+.adres{display:block}
+.adres:empty::before{content:"[Açık adres]";text-decoration:underline dotted;text-decoration-thickness:1px;text-underline-offset:3px}
+
+/* bölümler */
+.bolum{padding:88px 0}
+.bolum h2{font-size:clamp(1.85rem,1.3rem + 1.6vw,2.6rem)}
+.bolum .giris-metni{margin-top:16px;max-width:var(--olcu);color:var(--sogut)}
+
+/* ilk görüşme cetveli */
+.gorusme{background:var(--yaprak)}
+.gorusme-ust{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:end}
+.once{max-width:var(--olcu)}
+.once h3,.sonra h3{font:600 16px/1.4 var(--sans);margin-bottom:6px;letter-spacing:0}
+.cetvel{margin-top:56px;display:grid;grid-template-columns:15fr 20fr 10fr 15fr;counter-reset:adim}
+.cetvel li{counter-increment:adim;padding-right:22px;min-width:0}
+.cetvel .serit{display:block;height:14px;margin-right:-22px;border-right:2px solid var(--yaprak)}
+.cetvel li:nth-child(1) .serit{background:var(--s1)}
+.cetvel li:nth-child(2) .serit{background:var(--s2)}
+.cetvel li:nth-child(3) .serit{background:var(--s3)}
+.cetvel li:nth-child(4) .serit{background:var(--s4)}
+.cetvel .dk{display:block;margin-top:10px;font-size:14px;color:var(--sogut);font-variant-numeric:tabular-nums}
+.cetvel h3{margin-top:18px;font-size:21px;font-weight:600;display:flex;gap:10px;align-items:baseline}
+.cetvel h3::before{content:counter(adim) ".";color:var(--zeytin);font-size:30px;line-height:1}
+.cetvel p{margin-top:10px;font-size:16px}
+.sonra{margin-top:56px;padding-top:24px;border-top:1px solid var(--cizgi);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px}
+.sonra p{max-width:var(--olcu)}
+.not{font-size:15px;color:var(--sogut)}
+
+/* çalışma alanları + görüşme biçimleri */
+.alanlar-in{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px}
+.alanlar dl{border-top:1px solid var(--murekkep)}
+.alanlar dl div{display:grid;grid-template-columns:minmax(0,13em) 1fr;gap:24px;padding:20px 0;border-bottom:1px solid var(--cizgi)}
+.alanlar dt{font:600 19px/1.3 var(--serif)}
+.bicim{margin-top:56px}
+.bicim h3{font-size:22px;font-weight:600;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:12px 16px 12px 0;border-bottom:1px solid var(--cizgi)}
+thead th{font-weight:500;color:var(--sogut);font-size:14px;border-bottom:1px solid var(--murekkep)}
+tbody th{font-weight:600;white-space:nowrap}
+
+/* hakkında */
+.hakkinda{border-top:1px solid var(--cizgi)}
+.hakkinda-in{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,3fr);gap:56px;align-items:start}
+.portre{aspect-ratio:4/5;background:var(--yaprak);display:flex;align-items:flex-end;padding:16px;font-size:14px;color:var(--sogut)}
+.hakkinda h2{overflow-wrap:anywhere;font-size:clamp(1.7rem,1.3rem + 1.2vw,2.3rem)}
+.hakkinda .metin p{margin-top:18px;max-width:var(--olcu)}
+.hakkinda dl{font-size:15px}
+.hakkinda dl div{padding:12px 0;border-top:1px solid var(--cizgi)}
+.hakkinda dt{color:var(--sogut)}
+
+/* sorular */
+.sorular-in{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px}
+details{border-bottom:1px solid var(--cizgi)}
+details:first-child{border-top:1px solid var(--murekkep)}
+summary{cursor:pointer;list-style:none;padding:20px 40px 20px 0;position:relative;font:500 19px/1.35 var(--serif)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:4px;top:16px;font:400 26px/1 var(--sans);color:var(--zeytin)}
+details[open] summary::after{content:"\2212"}
+details p{padding:0 0 22px;max-width:var(--olcu)}
+
+/* iletişim */
+.iletisim{background:var(--murekkep);color:var(--zemin)}
+.iletisim a:hover{color:var(--yaprak)}
+.iletisim-in{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:start}
+.iletisim h2{color:var(--zemin)}
+.iletisim .giris-metni{color:var(--cizgi)}
+.iletisim dl div{display:grid;grid-template-columns:8em minmax(0,1fr);gap:16px;padding:16px 0;border-top:1px solid var(--koyu-cizgi)}
+.iletisim dt{color:var(--cizgi)}
+.iletisim dd{overflow-wrap:anywhere}
+.iletisim dd a{font-weight:600}
+.iletisim .btn{margin-top:32px;background:var(--zemin);color:var(--murekkep)}
+.iletisim .btn:hover{background:var(--yaprak);color:var(--murekkep)}
+
+.ft{padding:36px 0 48px;font-size:14px;color:var(--sogut)}
+.ft-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px}
+.ft p+p{margin-top:8px}
+
+.mbar{display:none}
+@media (max-width:1000px){
+  .hd-nav{display:none}
+  .hd-tel{margin-left:auto}
+  .giris-in,.gorusme-ust,.sonra,.alanlar-in,.sorular-in,.iletisim-in,.ft-in{grid-template-columns:1fr;gap:40px}
+  .hakkinda-in{grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:40px}
+  .hakkinda dl{grid-column:2}
+  .portre{grid-row:span 2}
+  .giris h1{max-width:16ch}
+  .kunye{max-width:560px}
+}
+@media (max-width:900px){
+  .cetvel{grid-template-columns:1fr;margin-top:36px}
+  .cetvel li{display:grid;grid-template-columns:14px minmax(0,1fr);column-gap:18px;padding:0 0 28px}
+  .cetvel .serit{grid-row:1 / span 3;height:auto;margin:0;border:0}
+  .cetvel .dk{margin:0}
+  .cetvel h3{margin-top:4px}
+}
+@media (max-width:760px){
+  .wrap{padding:0 20px}
+  body{padding-bottom:60px}
+  .hd-in{min-height:58px;gap:16px}
+  .hd-ad{font-size:17px}
+  .giris{padding:44px 0 56px}
+  .giris .sunus{font-size:18px}
+  .bolum{padding:60px 0}
+  .alanlar dl div{grid-template-columns:1fr;gap:6px}
+  table thead{display:none}
+  table,tbody,tr,th,td{display:block}
+  tbody tr{padding:12px 0;border-bottom:1px solid var(--cizgi)}
+  tbody th,tbody td{border:0;padding:2px 0}
+  .hakkinda-in{grid-template-columns:1fr}
+  .hakkinda dl{grid-column:auto}
+  .portre{max-width:240px}
+  .iletisim dl div{grid-template-columns:1fr;gap:2px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--murekkep);border-top:1px solid var(--zeytin)}
+  .mbar a{padding:16px 6px;text-align:center;font-weight:600;font-size:15px;text-decoration:none;color:var(--zemin)}
+  .mbar a+a{border-left:1px solid var(--koyu-cizgi)}
+}
+@media (prefers-reduced-motion:reduce){.giris h1{animation:none}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "MedicalBusiness", "name": "Dyt. Emel Yılmaz", "telephone": "+905394927196", "address": {"@type": "PostalAddress", "streetAddress": "Kartaltepe, 34188 Bakırköy/İstanbul", "addressLocality": "Bakırköy", "addressRegion": "İstanbul", "addressCountry": "TR"}}</script>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<div class="demo-bar" role="note"><div class="wrap"><b>Tasarım önizlemesi.</b> Noktalı çizgiyle işaretli bilgiler örnektir; yayından önce birlikte doldurulur.</div></div>
+
+<header class="hd"><div class="wrap hd-in">
+<a class="hd-ad" href="#icerik">Dyt. Emel Yılmaz</a>
+<nav class="hd-nav" aria-label="Ana menü"><a href="#ilk-gorusme">İlk görüşme</a><a href="#alanlar">Çalışma alanları</a><a href="#hakkinda">Hakkında</a><a href="#sorular">Sorular</a><a href="#iletisim">İletişim</a></nav>
+<a class="hd-tel" href="tel:+905394927196">0539 492 71 96</a>
+</div></header>
+
+<main id="icerik">
+<section class="giris"><div class="wrap giris-in">
+<div>
+<h1>Bakırköy’de beslenme ve diyet danışmanlığı</h1>
+<p class="sunus">Kilo yönetimi ve hastalıklarda beslenme için kişiye göre hazırlanan plan. Görüşmeler yüz yüze ya da online, randevuyla yapılır.</p>
+<div class="eylem">
+<a class="btn" href="https://wa.me/905394927196?text=Merhaba%2C%20Dyt.%20Emel%20Y%C4%B1lmaz%20web%20sitesinden%20yaz%C4%B1yorum.%20%C4%B0lk%20g%C3%B6r%C3%BC%C5%9Fme%20i%C3%A7in%20uygun%20g%C3%BCn%20%C3%B6%C4%9Frenmek%20istiyorum.">Randevu için WhatsApp’tan yazın</a>
+<p class="ya">ya da arayın: <a href="tel:+905394927196">0539 492 71 96</a></p>
+</div>
+</div>
+<div class="kunye">
+<p class="ad">Dyt. Emel Yılmaz</p>
+<p class="unvan">Diyetisyen, Bakırköy</p>
+<dl>
+<div><dt>Adres</dt><dd><span class="adres">Kartaltepe, 34188 Bakırköy/İstanbul</span><a href="https://www.google.com/maps/place/Diyetisyen+Emel+Y%C4%B1lmaz/data=!4m7!3m6!1s0x14cabb454e7f4d21:0x864fb1245068edce!8m2!3d40.9834576!4d28.8728727!16s%2Fg%2F11c1wz2rq2!19sChIJIU1_TkW7yhQRzu1oUCSxT4Y">Yol tarifi al</a></dd></div>
+<div><dt>Görüşme</dt><dd>Yüz yüze ve online, randevuyla</dd></div>
+<div><dt>Saatler</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">Hafta içi 09.30-18.00</span></dd></div>
+</dl>
+</div>
+</div></section>
+
+<section class="bolum gorusme" id="ilk-gorusme"><div class="wrap">
+<div class="gorusme-ust">
+<div><h2>İlk görüşme nasıl geçer</h2></div>
+<div class="once"><h3>Randevudan önce</h3><p>Varsa son altı aya ait kan tahlillerinizi ve düzenli kullandığınız ilaçların listesini hazırlayın. Tahliliniz yoksa da görüşme yapılır; gerekirse hekiminize danışmanız önerilir.</p></div>
+</div>
+<ol class="cetvel">
+<li><span class="serit" aria-hidden="true"></span><span class="dk">0-15. dakika</span><h3>Tanışma ve sağlık geçmişi</h3><p>Hastalıklar, ilaçlar, tahliller, uyku ve iş düzeni konuşulur.</p></li>
+<li><span class="serit" aria-hidden="true"></span><span class="dk">15-35. dakika</span><h3>Beslenme alışkanlıkları</h3><p>Bir günde ne, ne zaman ve nerede yediğiniz; sevdiğiniz ve yemediğiniz yiyecekler.</p></li>
+<li><span class="serit" aria-hidden="true"></span><span class="dk">35-45. dakika</span><h3>Ölçümler</h3><p>Boy, kilo ve çevre ölçümleri; varsa vücut analizi.</p></li>
+<li><span class="serit" aria-hidden="true"></span><span class="dk">45-60. dakika</span><h3>Hedef ve ilk hafta</h3><p>Hedef birlikte belirlenir, ilk haftanın öğün düzeni konuşulur.</p></li>
+</ol>
+<div class="sonra">
+<p class="not">Süreler örnektir ve görüşmeye göre değişir.</p>
+<div><h3>Görüşmeden sonra</h3><p>Yazılı plan birkaç gün içinde iletilir. Kontrol görüşmelerinde ölçümler ve günlük kayıtlar birlikte değerlendirilir, plan iş ve aile düzeninize göre güncellenir. Sonuçlar kişiden kişiye değişir ve garanti edilmez.</p></div>
+</div>
+</div></section>
+
+<section class="bolum alanlar" id="alanlar"><div class="wrap alanlar-in">
+<div><h2>Çalışma alanları</h2><p class="giris-metni">Plan; tahlilleriniz, günlük düzeniniz ve yemek alışkanlıklarınız üzerinden hazırlanır.</p></div>
+<div>
+<dl>
+<div><dt>Kilo yönetimi</dt><dd>Kilo verme ve koruma dönemlerinde porsiyon ve öğün düzenine dayalı, günlük yaşama uyan plan.</dd></div>
+<div><dt>Hastalıklarda beslenme</dt><dd>İnsülin direnci, diyabet, tiroid ya da yüksek kolesterol gibi durumlarda, hekiminizin tedavisiyle uyumlu beslenme düzeni.</dd></div>
+<div><dt>Diğer alanlar</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[Varsa: gebelik, çocuk, sporcu beslenmesi]</span></dd></div>
+</dl>
+<div class="bicim">
+<h3>Görüşme biçimleri</h3>
+<table>
+<thead><tr><th scope="col">Görüşme</th><th scope="col">Nasıl yapılır</th></tr></thead>
+<tbody>
+<tr><th scope="row">İlk görüşme</th><td>Yüz yüze ya da görüntülü</td></tr>
+<tr><th scope="row">Kontrol</th><td>Ölçümler ve planın güncellenmesi</td></tr>
+<tr><th scope="row">Online</th><td>Görüntülü görüşme; ölçümler evde alınıp paylaşılır, plan PDF olarak gönderilir</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div></section>
+
+<section class="bolum hakkinda" id="hakkinda"><div class="wrap hakkinda-in">
+<div class="portre" role="img" aria-label="Fotoğraf yeri">Fotoğrafınız buraya gelecek</div>
+<div class="metin">
+<h2>Dyt. Emel Yılmaz</h2>
+<p><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[Üniversite, yıl]</span> Beslenme ve Diyetetik Bölümü mezunu. <span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[Hastane ya da klinik deneyimi, bir iki cümle.]</span></p>
+<p>Danışanlarını Bakırköy’deki ofisinde ve online olarak kabul ediyor.</p>
+</div>
+<dl>
+<div><dt>Unvan</dt><dd>Diyetisyen</dd></div>
+<div><dt>Görüşme</dt><dd>Yüz yüze ve online</dd></div>
+</dl>
+</div></section>
+
+<section class="bolum sorular" id="sorular"><div class="wrap sorular-in">
+<div><h2>Sorular</h2></div>
+<div>
+<details><summary>İlk görüşmeye ne getirmeliyim?</summary><p>Varsa son altı ayın kan tahlilleri ve düzenli kullandığınız ilaçların listesi yeterlidir. Rahat kıyafetle gelmeniz ölçümleri kolaylaştırır.</p></details>
+<details><summary>Yasak yiyecek listesi veriliyor mu?</summary><p>Plan, sevdiğiniz yemekler ve günlük düzeniniz üzerinden kurulur. Amaç yiyecekleri yasaklamak değil, öğün ve porsiyon düzenini oturtmaktır.</p></details>
+<details><summary>Kronik bir hastalığım var. Plan hekimimle uyumlu olur mu?</summary><p>Evet. Beslenme planı hekiminizin önerdiği tedaviyi destekleyecek şekilde hazırlanır; ilaç düzeninizde değişiklik yapılmaz.</p></details>
+<details><summary>Online görüşme yüz yüze görüşmenin yerini tutar mı?</summary><p>Süreç aynıdır: görüntülü görüşme, evde alınan ölçümler ve yazılı plan. Vücut analizi gibi ölçümler için yüz yüze görüşme önerilebilir.</p></details>
+<details><summary>Kontrollere ne sıklıkla gelmem gerekir?</summary><p>İlk haftalarda genellikle bir iki haftada bir; sonra aralık açılır. Sıklık görüşmede birlikte belirlenir.</p></details>
+</div>
+</div></section>
+
+<section class="bolum iletisim" id="iletisim"><div class="wrap iletisim-in">
+<div>
+<h2>Adres ve randevu</h2>
+<p class="giris-metni">Görüşmeler randevuyla yapılır. Uygun gün ve saat için arayabilir ya da WhatsApp’tan yazabilirsiniz.</p>
+<a class="btn" href="https://wa.me/905394927196?text=Merhaba%2C%20Dyt.%20Emel%20Y%C4%B1lmaz%20web%20sitesinden%20yaz%C4%B1yorum.%20%C4%B0lk%20g%C3%B6r%C3%BC%C5%9Fme%20i%C3%A7in%20uygun%20g%C3%BCn%20%C3%B6%C4%9Frenmek%20istiyorum.">WhatsApp’tan yazın</a>
+</div>
+<dl>
+<div><dt>Adres</dt><dd><span class="adres">Kartaltepe, 34188 Bakırköy/İstanbul</span><a href="https://www.google.com/maps/place/Diyetisyen+Emel+Y%C4%B1lmaz/data=!4m7!3m6!1s0x14cabb454e7f4d21:0x864fb1245068edce!8m2!3d40.9834576!4d28.8728727!16s%2Fg%2F11c1wz2rq2!19sChIJIU1_TkW7yhQRzu1oUCSxT4Y">Yol tarifi al</a></dd></div>
+<div><dt>Telefon</dt><dd><a href="tel:+905394927196">0539 492 71 96</a></dd></div>
+<div><dt>Saatler</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">Hafta içi 09.30-18.00, cumartesi 10.00-14.00</span></dd></div>
+<div><dt>Online</dt><dd>Türkiye’nin her yerinden görüntülü görüşme</dd></div>
+</dl>
+</div></section>
+</main>
+
+<footer class="ft"><div class="wrap ft-in">
+<div><p>© 2026 Dyt. Emel Yılmaz. Bu sayfadaki bilgiler genel bilgilendirme amaçlıdır; hekim muayenesinin ve tedavinin yerine geçmez. Sonuçlar kişiden kişiye değişir.</p></div>
+<div><p>Son güncelleme: 14.11.2026</p><p>Editör: <span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[ad, e-posta]</span></p><p><span class="ph" title="Yayından önce eklenecek">KVKK Aydınlatma Metni</span></p></div>
+</div></footer>
+
+<nav class="mbar" aria-label="Hızlı iletişim"><a href="https://wa.me/905394927196?text=Merhaba%2C%20Dyt.%20Emel%20Y%C4%B1lmaz%20web%20sitesinden%20yaz%C4%B1yorum.%20%C4%B0lk%20g%C3%B6r%C3%BC%C5%9Fme%20i%C3%A7in%20uygun%20g%C3%BCn%20%C3%B6%C4%9Frenmek%20istiyorum.">WhatsApp</a><a href="tel:+905394927196">Ara</a><a href="https://www.google.com/maps/place/Diyetisyen+Emel+Y%C4%B1lmaz/data=!4m7!3m6!1s0x14cabb454e7f4d21:0x864fb1245068edce!8m2!3d40.9834576!4d28.8728727!16s%2Fg%2F11c1wz2rq2!19sChIJIU1_TkW7yhQRzu1oUCSxT4Y">Yol tarifi al</a></nav>
+</body>
+</html>

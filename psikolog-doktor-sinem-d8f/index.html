@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="tr">
+<!--
+PLAN (psikolog, 14.11.2026)
+Renkler (oklch, :root): Sis zemin 0.962/0.008/235 (bekleme odası duvarı gibi soğuk, kremden uzak),
+Yüzey 0.985/0.003/235 (tabela zemini), Mürekkep 0.30/0.025/240 (metin), Kurşun 0.45/0.025/240 (ikincil metin),
+Arduvaz 0.48/0.05/240 (tek vurgu: düğme, bağlantı, tabela çerçevesi), Çizgi 0.85/0.012/235.
+Yazı: Newsreader (yalnız başlık ve tabela adı, 400, italik yok) + Figtree (gövde, arayüz). Avukattaki Source Serif 4 + IBM Plex'ten ayrı.
+Düzen: sola yaslı; ilk ekranda solda tek cümlelik h1 ve tek eylem, sağda bilgi; altta bölümler solda dar etiket sütunu,
+sağda 62ch okuma sütunu; bölüm aralıkları kısa/uzun değişir, kart yok, yalnız ince çizgi.
+Akılda kalıcı öğe: muayenehane kapısındaki tabela gibi çift çizgili ad levhası (ad, unvan yer tutucusu, adres, saat).
+Eleştiri: "iki sütunlu hero" jenerik olabilir; bu yüzden sağdaki öğe kart değil, tek ve tipografik bir levha, gölgesiz.
+Unvan sabit yazılmaz (yalnız yer tutucu); kişi mi kurum mu bilinmediği için edilgen dil.
+Harita iframe'i yok (üçüncü taraf çerez); yalnız "Yol tarifi al" bağlantısı. Yorum, yıldız, fiyat, sayaç, sonuç vaadi yok.
+-->
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Doktor Sinem Taşyaran | Şişli / İstanbul</title>
+<meta name="description" content="Doktor Sinem Taşyaran, Şişli / İstanbul. Yüz yüze ve online psikolojik destek görüşmeleri, ilk görüşme bilgisi, adres ve telefon.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Doktor Sinem Taşyaran | Şişli / İstanbul">
+<meta property="og:description" content="Yüz yüze ve online psikolojik destek görüşmeleri. İlk görüşme bilgisi, adres ve telefon.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Figtree:wght@400;500;600&display=swap">
+<style>
+:root{
+  --sis:oklch(0.962 0.008 235);
+  --yuzey:oklch(0.985 0.003 235);
+  --murekkep:oklch(0.30 0.025 240);
+  --kursun:oklch(0.45 0.025 240);
+  --arduvaz:oklch(0.48 0.05 240);
+  --arduvaz-koyu:oklch(0.40 0.05 240);
+  --cizgi:oklch(0.85 0.012 235);
+  --serif:'Newsreader',Georgia,serif;
+  --sans:'Figtree',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--sis);color:var(--murekkep);font:400 17px/1.55 var(--sans)}
+h1,h2,h3{margin:0;font-weight:400;text-wrap:balance}
+p,dl,dd,ul{margin:0}
+a{color:var(--arduvaz-koyu);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:2px solid var(--arduvaz);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:8px;top:8px;z-index:9;background:var(--murekkep);color:var(--yuzey);padding:8px 12px}
+.demo-bar{background:var(--murekkep);color:var(--sis);font:500 13px/1.45 var(--sans);padding:8px 16px;text-align:center}
+.demo-bar b{font-weight:600}
+.ph{text-decoration:underline dotted 1px;text-underline-offset:3px;color:var(--kursun)}
+.w{max-width:1160px;margin:0 auto;padding:0 40px}
+
+.hd{border-bottom:1px solid var(--cizgi)}
+.hd .w{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:68px}
+.hd-ad{font:500 19px/1.25 var(--serif);text-decoration:none;color:var(--murekkep);min-width:0;overflow-wrap:anywhere}
+.hd-tel{font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+
+.hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;align-items:start;padding-top:88px;padding-bottom:104px}
+.hero h1{font:400 clamp(36px,4.4vw,58px)/1.1 var(--serif);letter-spacing:-.012em;max-width:13em}
+.lede{margin-top:24px;max-width:34em;font-size:19px;color:var(--kursun)}
+.eylem{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 24px;border-radius:4px;background:var(--arduvaz);color:var(--yuzey);font:600 16px/1 var(--sans);text-decoration:none}
+.btn:hover{background:var(--arduvaz-koyu)}
+.tel{font-weight:600;font-size:17px;font-variant-numeric:tabular-nums;min-height:44px;display:inline-flex;align-items:center}
+
+.levha{background:var(--yuzey);border:1px solid var(--arduvaz);padding:6px;border-radius:3px;animation:gel .6s ease-out both}
+.levha-ic{border:1px solid var(--cizgi);padding:30px 30px 26px}
+.levha-ad{font:400 clamp(26px,2.4vw,32px)/1.15 var(--serif);overflow-wrap:anywhere;text-wrap:balance}
+.levha-unvan{margin-top:8px;font-size:16px}
+.levha dl{margin-top:22px;border-top:1px solid var(--cizgi)}
+.levha dl div{display:grid;grid-template-columns:96px minmax(0,1fr);gap:4px 16px;padding:12px 0;border-bottom:1px solid var(--cizgi);font-size:16px}
+.levha dl div:last-child{border-bottom:0;padding-bottom:0}
+.levha dt{color:var(--kursun)}
+.levha dd{overflow-wrap:anywhere}
+@keyframes gel{from{opacity:0}to{opacity:1}}
+
+.bol{position:relative;display:grid;grid-template-columns:240px minmax(0,1fr);gap:24px 64px;padding-top:56px;padding-bottom:64px}
+.bol::before{content:"";position:absolute;top:0;left:40px;right:40px;border-top:1px solid var(--cizgi)}
+.bol.genis{padding-top:80px;padding-bottom:96px}
+.bol h2{font:400 clamp(26px,2.4vw,32px)/1.2 var(--serif);letter-spacing:-.005em}
+.metin{max-width:62ch}
+.metin>p+p{margin-top:16px}
+.metin h3{font:600 17px/1.4 var(--sans);margin-top:32px}
+.metin h3:first-child{margin-top:0}
+.metin h3+p{margin-top:6px}
+.not{color:var(--kursun)}
+
+.sss{max-width:62ch;border-top:1px solid var(--cizgi)}
+.sss details{border-bottom:1px solid var(--cizgi)}
+.sss summary{position:relative;padding:20px 40px 20px 0;cursor:pointer;list-style:none;font:400 21px/1.35 var(--serif)}
+.sss summary::-webkit-details-marker{display:none}
+.sss summary::after{content:"+";position:absolute;right:4px;top:18px;font:400 24px/1 var(--sans);color:var(--arduvaz)}
+.sss details[open] summary::after{content:"\2212"}
+.sss details p{padding:0 0 22px}
+
+.iletisim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px 48px;max-width:760px}
+.iletisim dt{color:var(--kursun);font-size:15px}
+.iletisim dd{margin-top:4px;overflow-wrap:anywhere}
+.iletisim dd a{display:inline-flex;align-items:center;min-height:44px;font-weight:600}
+.iletisim .tel-dd a{font-variant-numeric:tabular-nums}
+.acil{margin-top:48px;padding-top:20px;border-top:1px solid var(--murekkep);max-width:62ch}
+.acil a{font-weight:600;white-space:nowrap}
+
+.ft{border-top:1px solid var(--cizgi);padding:32px 0 48px;color:var(--kursun);font-size:14.5px}
+.ft .w{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 40px}
+.ft p{max-width:62ch}
+
+.mbar{display:none}
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;gap:48px;padding-top:56px;padding-bottom:72px}
+  .levha{max-width:520px}
+  .bol{grid-template-columns:1fr;gap:20px}
+  .bol.genis{padding-top:56px;padding-bottom:72px}
+}
+@media (max-width:720px){
+  .w{padding:0 20px}
+  .bol::before{left:20px;right:20px}
+  .hd .w{min-height:60px}
+  .hd-tel{display:none}
+  .hero{padding-top:40px;padding-bottom:56px;gap:40px}
+  .hero h1{font-size:clamp(32px,8.6vw,40px)}
+  .lede{font-size:18px;margin-top:18px}
+  .eylem{margin-top:28px}
+  .eylem .btn{width:100%}
+  .levha-ic{padding:22px 20px 20px}
+  .levha dl div{grid-template-columns:1fr;gap:2px}
+  .bol{padding-top:44px;padding-bottom:48px}
+  .iletisim{grid-template-columns:1fr;gap:20px}
+  .sss summary{font-size:19px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:5;background:var(--yuzey);border-top:1px solid var(--cizgi)}
+  .mbar a{display:flex;align-items:center;justify-content:center;min-height:56px;padding:0 6px;font:600 15px/1.2 var(--sans);text-decoration:none;text-align:center;color:var(--arduvaz-koyu)}
+  .mbar a:first-child{background:var(--arduvaz);color:var(--yuzey)}
+  .mbar a+a{border-left:1px solid var(--cizgi)}
+  body{padding-bottom:56px}
+}
+@media (prefers-reduced-motion:reduce){.levha{animation:none}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "ProfessionalService", "name": "Doktor Sinem Taşyaran", "telephone": "+905469655515", "address": {"@type": "PostalAddress", "streetAddress": "İdealtepe Apartmanı, Merkez, Büyükdere Cd. No: 37 Kat: 4 Daire: 5, 34381 Şişli/İstanbul", "addressLocality": "Şişli", "addressRegion": "İstanbul", "addressCountry": "TR"}}</script>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<div class="demo-bar" role="note"><b>Tasarım önizlemesi.</b> Noktalı çizgiyle işaretli bilgiler örnektir; yayından önce birlikte doldurulur.</div>
+
+<header class="hd"><div class="w">
+<a class="hd-ad" href="#">Doktor Sinem Taşyaran</a>
+<a class="hd-tel" href="tel:+905469655515">0546 965 55 15</a>
+</div></header>
+
+<main id="icerik">
+<section class="w hero">
+<div>
+<h1>Şişli’de ve online psikolojik destek görüşmeleri</h1>
+<p class="lede">Bireysel görüşmeler, yüz yüze ya da görüntülü. Ne yaşadığınızı adlandırmak zorunda değilsiniz; bir görüşme istediğinizi söylemeniz yeterli.</p>
+<div class="eylem"><a class="btn" href="https://wa.me/905469655515?text=Merhaba%2C%20web%20sitenizden%20yaz%C4%B1yorum.%20%C4%B0lk%20g%C3%B6r%C3%BC%C5%9Fme%20i%C3%A7in%20uygun%20bir%20g%C3%BCn%20%C3%B6%C4%9Frenmek%20istiyorum.">WhatsApp’tan yazın</a><a class="tel" href="tel:+905469655515">0546 965 55 15</a></div>
+</div>
+<aside class="levha" aria-label="Künye"><div class="levha-ic">
+<p class="levha-ad">Doktor Sinem Taşyaran</p>
+<p class="levha-unvan">Psikolog</p>
+<dl>
+<div><dt>Adres</dt><dd>İdealtepe Apartmanı, Merkez, Büyükdere Cd. No: 37 Kat: 4 Daire: 5, 34381 Şişli/İstanbul</dd></div>
+<div><dt>Görüşme</dt><dd>Yüz yüze ve online</dd></div>
+<div><dt>Saatler</dt><dd><span class="ph" title="Yayından önce doldurulacak">[Görüşme günleri ve saatleri, ör. 10.00-19.00]</span></dd></div>
+</dl>
+</div></aside>
+</section>
+
+<section class="w bol" id="konular">
+<h2>Hangi konularda</h2>
+<div class="metin">
+<p><span class="ph" title="Yayından önce doldurulacak">[Çalışılan konular ve yaş grupları, aldığı eğitimlere göre]</span></p>
+<p class="not">Konunuz burada yazmıyorsa da sorabilirsiniz. Uygun olmadığı durumda sizi başka bir meslektaşa ya da kuruma yönlendirmek de görüşmenin parçasıdır.</p>
+</div>
+</section>
+
+<section class="w bol genis" id="ilk-gorusme">
+<h2>İlk görüşme nasıl geçer</h2>
+<div class="metin">
+<h3>Yazdığınızda</h3>
+<p>WhatsApp’tan ya da telefonla ulaşırsınız. Ayrıntı anlatmanız gerekmez. Yüz yüze mi online mı görüşmek istediğinizi ve size uyan günleri söylemeniz yeterli.</p>
+<h3>İlk seansta</h3>
+<p>Sizi neyin getirdiğini kendi sıranızla anlatırsınız, sorular sorulur. Hazırlıklı gelmeniz beklenmez. Gizliliğin kapsamı ve sınırları bu görüşmede açıkça konuşulur.</p>
+<h3>Sonrasında</h3>
+<p>Birlikte çalışmanın size uyup uymadığına ve görüşme sıklığına birlikte karar verilir. Devam etmemeye karar vermek de olağandır.</p>
+</div>
+</section>
+
+<section class="w bol genis" id="sorular">
+<h2>İlk seans üzerine sorular</h2>
+<div class="sss">
+<details><summary>Bir seans ne kadar sürer?</summary><p>Seanslar <span class="ph" title="Yayından önce doldurulacak">[seans süresi, ör. 50 dakika]</span> sürer. İlk görüşmede de süre aynıdır.</p></details>
+<details><summary>Konuştuklarım başkasıyla paylaşılır mı?</summary><p>Hayır. Görüşmelerde konuşulanlar meslek etiği ve 6698 sayılı KVKK kapsamında gizlidir. Gizlilik yalnızca sizin ya da bir başkasının hayatının tehlikede olduğu durumlarda ve yasal zorunluluklarda sınırlanır.</p></details>
+<details><summary>Online görüşme yüz yüze görüşmenin yerini tutar mı?</summary><p>Birçok kişi için uygundur ve yolda geçen zamanı azaltır. Hangisinin size daha uygun olduğu ilk görüşmede birlikte değerlendirilir.</p></details>
+<details><summary>Kaç seans gerekir?</summary><p>Bu kişiye ve konuya göre değişir; önceden bir sayı söylemek doğru olmaz. Gidişat belli aralıklarla birlikte gözden geçirilir.</p></details>
+<details><summary>Psikiyatristten farkı nedir?</summary><p>Bu görüşmeler konuşmaya dayanır, ilaç yazılmaz. İlacın gerekli olup olmadığının değerlendirilmesi için bir psikiyatri uzmanına yönlendirme yapılabilir.</p></details>
+<details><summary>Ücreti nasıl öğrenirim?</summary><p>Görüşme ücreti telefonla ya da yazışırken, randevu kesinleşmeden önce bildirilir.</p></details>
+<details><summary>Gelemeyeceğim bir gün olursa?</summary><p>Olabildiğince önceden haber vermeniz yeterli. Erteleme ve iptal koşulları ilk görüşmede konuşulur.</p></details>
+</div>
+</section>
+
+<section class="w bol" id="egitim">
+<h2>Eğitim</h2>
+<div class="metin">
+<p><span class="ph" title="Yayından önce doldurulacak">[Lisans ve yüksek lisans: üniversite, yıl. Aldığı terapi eğitimleri ve üyelikler.]</span></p>
+</div>
+</section>
+
+<section class="w bol genis" id="iletisim">
+<h2>Adres ve iletişim</h2>
+<div>
+<dl class="iletisim">
+<div><dt>Adres</dt><dd>İdealtepe Apartmanı, Merkez, Büyükdere Cd. No: 37 Kat: 4 Daire: 5, 34381 Şişli/İstanbul<br><a href="https://www.google.com/maps/place/Psikolog+Doktor+Sinem+Ta%C5%9Fyaran/data=!4m7!3m6!1s0x409fdfe2f2c593ed:0x8449a73a7d8d89ee!8m2!3d41.0630336!4d28.9901411!16s%2Fg%2F11bwn4mk7y!19sChIJ7ZPF8uLfn0AR7omNfTqnSYQ">Yol tarifi al</a></dd></div>
+<div class="tel-dd"><dt>Telefon ve WhatsApp</dt><dd><a href="tel:+905469655515">0546 965 55 15</a><br><a href="https://wa.me/905469655515?text=Merhaba%2C%20web%20sitenizden%20yaz%C4%B1yorum.%20%C4%B0lk%20g%C3%B6r%C3%BC%C5%9Fme%20i%C3%A7in%20uygun%20bir%20g%C3%BCn%20%C3%B6%C4%9Frenmek%20istiyorum.">WhatsApp’tan yazın</a></dd></div>
+</dl>
+<p class="not" style="margin-top:20px;max-width:62ch">Seans sırasında telefon açılamayabilir; mesaj bırakmanız yeterli.</p>
+<p class="acil"><b>Acil bir durumdaysanız</b> randevu beklemeyin: <a href="tel:112">112’yi arayın</a> ya da en yakın hastanenin acil servisine başvurun.</p>
+</div>
+</section>
+</main>
+
+<footer class="ft"><div class="w">
+<p>© 2026 Doktor Sinem Taşyaran. Bu sayfadaki bilgiler genel bilgilendirme amaçlıdır; psikolojik değerlendirme ya da tedavinin yerine geçmez. Sayfa çerez kullanmaz.</p>
+<p>Son güncelleme: 14.11.2026<br><span class="ph" title="Yayından önce doldurulacak">[KVKK aydınlatma metni]</span></p>
+</div></footer>
+
+<nav class="mbar" aria-label="Hızlı iletişim"><a href="https://wa.me/905469655515?text=Merhaba%2C%20web%20sitenizden%20yaz%C4%B1yorum.%20%C4%B0lk%20g%C3%B6r%C3%BC%C5%9Fme%20i%C3%A7in%20uygun%20bir%20g%C3%BCn%20%C3%B6%C4%9Frenmek%20istiyorum.">WhatsApp</a><a href="tel:+905469655515">Ara</a><a href="https://www.google.com/maps/place/Psikolog+Doktor+Sinem+Ta%C5%9Fyaran/data=!4m7!3m6!1s0x409fdfe2f2c593ed:0x8449a73a7d8d89ee!8m2!3d41.0630336!4d28.9901411!16s%2Fg%2F11bwn4mk7y!19sChIJ7ZPF8uLfn0AR7omNfTqnSYQ">Yol tarifi al</a></nav>
+</body>
+</html>

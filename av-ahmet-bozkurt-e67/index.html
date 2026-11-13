@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<!--
+TASARIM PLANI (avukat, 14.11.2026)
+Renkler (oklch, :root):
+  kâğıt     97.4% .004 255  soğuk dosya kâğıdı, zemin
+  mürekkep  22%   .022 260  dolma kalem mürekkebi, metin ve düğme
+  kurşun    45%   .018 260  ikincil metin, etiketler
+  cetvel    84%   .008 260  ince ayraç çizgileri
+  cilt      40%   .11  20   kanun kitabı cilt bezi bordosu; YALNIZ link ve antet çizgisi
+  kenar     94.6% .006 255  künye sütununun zemini
+Yazı: Source Serif 4 (ad, başlıklar, gövde metni) + IBM Plex Sans (menü, künye, düğme, etiket).
+Düzen fikri: sayfa antetli bir dilekçe kâğıdı gibi; solda dar metin sütunu, sağ kenarda dilekçe kenar
+  notu gibi duran, kaydırırken yerinde kalan bir "künye" (baro, sicil, adres, telefon, saat).
+Akılda kalıcı öğe: adın altındaki çift ince antet çizgisi (biri bordo) + kenar künyesi.
+Eleştiri: lacivert+bordo hukuk sitesi varsayılanına kayabilir; bu yüzden lacivert bant yok, zemin soğuk gri
+  kâğıt, bordo yalnız çizgi ve linkte. Kart, gölge, ikon, numara, eyebrow, scroll animasyonu, fotoğraf yok.
+  Harita gömülmedi (üçüncü taraf çerez); adres + "Yol tarifi al" linki var. TBB: yorum, başarı, ücretsiz
+  görüşme, kampanya dili yok; baro adı ilden türetilmez, yer tutucudur.
+-->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Av. Ahmet Bozkurt | Avukat, Odunpazarı / Eskişehir</title>
+<meta name="description" content="Av. Ahmet Bozkurt, avukat. Kurtuluş, Odunpazarı / Eskişehir. Adres, telefon ve çalışma saatleri.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Av. Ahmet Bozkurt | Avukat, Odunpazarı / Eskişehir">
+<meta property="og:description" content="Av. Ahmet Bozkurt, avukat. Kurtuluş, Odunpazarı / Eskişehir. Adres, telefon ve çalışma saatleri.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+<style>
+:root{
+  --kagit:oklch(97.4% .004 255);
+  --murekkep:oklch(22% .022 260);
+  --kursun:oklch(45% .018 260);
+  --cetvel:oklch(84% .008 260);
+  --cilt:oklch(40% .11 20);
+  --kenar:oklch(94.6% .006 255);
+  --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --olcu:68rem;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--kagit);color:var(--murekkep);font:400 1.125rem/1.55 var(--serif);
+  font-optical-sizing:auto;text-rendering:optimizeLegibility}
+a{color:var(--cilt);text-decoration-thickness:1px;text-underline-offset:.18em}
+a:hover{text-decoration-thickness:2px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--cilt);outline-offset:3px}
+h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.15;text-wrap:balance;margin:0}
+p{margin:0 0 1em}
+.skip{position:absolute;left:-999px;top:0;background:var(--murekkep);color:var(--kagit);padding:.5rem 1rem;font-family:var(--sans)}
+.skip:focus{left:1rem;z-index:9}
+.wrap{max-width:var(--olcu);margin:0 auto;padding:0 1.5rem}
+.ph{border-bottom:1px dotted var(--kursun);color:var(--kursun);cursor:help}
+
+/* önizleme şeridi */
+.demo-bar{background:var(--murekkep);color:var(--kagit);font:400 .875rem/1.45 var(--sans);padding:.55rem 1.5rem}
+.demo-bar b{font-weight:600}
+
+/* üst satır */
+.hd{border-bottom:1px solid var(--cetvel);font-family:var(--sans);font-size:.9375rem}
+.hd-in{display:flex;align-items:center;gap:2rem;min-height:3.75rem}
+.hd-ad{font:600 1.0625rem/1.2 var(--serif);color:var(--murekkep);text-decoration:none;max-width:22rem;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd nav{display:flex;gap:1.5rem;margin-left:auto}
+.hd nav a{color:var(--murekkep);text-decoration:none;white-space:nowrap}
+.hd nav a:hover{text-decoration:underline}
+.hd-tel{color:var(--murekkep);font-weight:500;white-space:nowrap;text-decoration:none;border-left:1px solid var(--cetvel);padding-left:1.5rem}
+
+/* antet */
+.antet{padding:clamp(3rem,7vw,5.5rem) 0 clamp(2.5rem,5vw,3.75rem);border-bottom:1px solid var(--cetvel)}
+.antet h1{max-width:20ch}
+.antet .ad{display:block;font-size:clamp(2.5rem,1.4rem + 4.4vw,4.5rem);font-weight:600;letter-spacing:-.012em;
+  line-height:1.04;overflow-wrap:anywhere}
+.antet h1.uzun{max-width:28ch}
+.antet h1.uzun .ad{font-size:clamp(1.9rem,1.2rem + 2.6vw,3rem);line-height:1.1}
+.antet h1.cokuzun{max-width:34ch}
+.antet h1.cokuzun .ad{font-size:clamp(1.5rem,1.1rem + 1.6vw,2.25rem);line-height:1.18}
+.antet .unvan{display:block;margin-top:.9rem;font:400 clamp(1.125rem,1rem + .5vw,1.375rem)/1.35 var(--sans);color:var(--kursun)}
+.cizgi{margin:2rem 0 1.75rem;height:5px;max-width:36rem;border-top:1px solid var(--murekkep);border-bottom:2px solid var(--cilt);
+  transform-origin:left center}
+.antet .giris{max-width:36rem;font-size:1.25rem;line-height:1.5;text-wrap:pretty}
+.eylem{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;margin-top:1.75rem;font-family:var(--sans)}
+.dugme{display:inline-block;background:var(--murekkep);color:var(--kagit);text-decoration:none;font:500 1rem/1 var(--sans);
+  padding:1rem 1.35rem;border-radius:2px}
+.dugme:hover{background:var(--cilt);text-decoration:none}
+.eylem .ikincil{font-size:1rem}
+@media (prefers-reduced-motion:no-preference){
+  .cizgi{animation:ciz .9s cubic-bezier(.2,.7,.2,1) .15s both}
+  @keyframes ciz{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+}
+
+/* gövde: metin sütunu + kenar künyesi */
+.govde{display:grid;grid-template-columns:minmax(0,1fr) 19rem;gap:0 clamp(2.5rem,6vw,6rem);align-items:start}
+.metin{max-width:44rem}
+.metin .bolum{max-width:40rem}
+.bolum{padding:3.25rem 0 1.25rem}
+.bolum+.bolum{border-top:1px solid var(--cetvel)}
+p{text-wrap:pretty}
+.bolum h2{font-size:clamp(1.6rem,1.3rem + 1vw,2rem);margin-bottom:1.1rem}
+.bolum .ac{color:var(--kursun)}
+
+.alanlar{list-style:none;margin:1.5rem 0 1rem;padding:0;border-top:1px solid var(--cetvel)}
+.alanlar li{padding:1rem 0;border-bottom:1px solid var(--cetvel)}
+.alanlar h3{font-size:1.1875rem;margin-bottom:.3rem}
+.alanlar p{margin:0;color:var(--kursun);font-size:1.0625rem}
+.not{font:400 .9375rem/1.5 var(--sans);color:var(--kursun)}
+
+.basamak p{max-width:62ch}
+.basamak b{font-weight:600}
+.getir{margin:1.5rem 0 1rem;padding:1.1rem 0 .4rem;border-top:1px solid var(--murekkep)}
+.getir h3{font:600 1rem/1.3 var(--sans);margin-bottom:.6rem}
+.getir ul{margin:0 0 1rem;padding-left:1.2rem}
+.getir li{margin:.2rem 0}
+.getir li::marker{color:var(--cilt)}
+
+.sss details{border-bottom:1px solid var(--cetvel)}
+.sss details:first-of-type{border-top:1px solid var(--cetvel)}
+.sss summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;gap:1rem;padding:1rem 0;
+  font:600 1.125rem/1.35 var(--serif)}
+.sss summary::-webkit-details-marker{display:none}
+.sss summary::after{content:"+";font:400 1.4rem/1 var(--sans);color:var(--cilt);flex:none}
+.sss details[open] summary::after{content:"\2212"}
+.sss details p{margin:0 0 1.2rem;max-width:62ch}
+
+/* künye */
+.kunye{background:var(--kenar);border-left:1px solid var(--cetvel);padding:2rem 1.5rem;font:400 .9375rem/1.5 var(--sans);
+  margin-top:clamp(3rem,7vw,5.5rem)}
+.kunye h2{font:600 1.25rem/1.2 var(--serif);margin-bottom:1rem}
+.kunye dl{margin:0}
+.kunye dl>div{padding:.6rem 0;border-top:1px solid var(--cetvel)}
+.kunye dt{color:var(--kursun);font-size:.8125rem;font-weight:500}
+.kunye dd{margin:0;overflow-wrap:anywhere}
+.kunye .tel{font-size:1.125rem;font-weight:500;color:var(--murekkep);text-decoration:none}
+.kunye .tel:hover{text-decoration:underline}
+.kunye .dugme{display:block;text-align:center;margin-top:1.25rem}
+@media (min-width:961px) and (min-height:720px){.kunye{position:sticky;top:1.5rem}}
+
+/* altbilgi */
+.ab{margin-top:4rem;border-top:1px solid var(--murekkep);font:400 .875rem/1.55 var(--sans);color:var(--kursun)}
+.ab-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem 3rem;padding:1.75rem 0 2.5rem}
+.ab p{margin:0;max-width:60ch}
+
+/* mobil alt çubuk */
+.mbar{display:none}
+
+@media (max-width:960px){
+  .govde{grid-template-columns:minmax(0,1fr)}
+  .metin{max-width:none}
+  .kunye{border-left:0;border-top:1px solid var(--murekkep);margin:2rem -1.5rem 0;padding:2rem 1.5rem}
+  .hd nav{display:none}
+  .hd-tel{margin-left:auto;border-left:0;padding-left:0}
+}
+@media (max-width:640px){
+  body{font-size:1.0625rem;padding-bottom:4.25rem}
+  .wrap{padding:0 1rem}
+  .demo-bar{padding:.55rem 1rem}
+  .kunye{margin:2rem -1rem 0;padding:1.75rem 1rem}
+  .hd-ad{max-width:58vw;font-size:1rem}
+  .hd-tel{border:0;padding:0;font-size:.875rem}
+  .antet .giris{font-size:1.125rem}
+  .eylem .ikincil{display:none}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1fr;position:fixed;left:0;right:0;bottom:0;z-index:5;
+    background:var(--murekkep);font:500 .9375rem/1 var(--sans)}
+  .mbar a{color:var(--kagit);text-decoration:none;text-align:center;padding:1.15rem .25rem calc(1.15rem + env(safe-area-inset-bottom))}
+  .mbar a+a{border-left:1px solid oklch(40% .02 260)}
+}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LegalService", "name": "Av. Ahmet Bozkurt", "telephone": "+905394607295", "address": {"@type": "PostalAddress", "streetAddress": "Kurtuluş, Pazaryolu Sk. No:7 D:2, 26090 Odunpazarı/Eskişehir", "addressLocality": "Odunpazarı", "addressRegion": "Eskişehir", "addressCountry": "TR"}, "areaServed": "Eskişehir", "knowsAbout": ["Aile Hukuku", "İş Hukuku", "Kira Hukuku", "Miras Hukuku"]}</script>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<div class="demo-bar" role="note"><b>Tasarım önizlemesi.</b> Noktalı çizgiyle işaretli bilgiler örnektir; yayından önce birlikte doldurulur.</div>
+
+<header class="hd"><div class="wrap hd-in">
+<a class="hd-ad" href="#icerik">Av. Ahmet Bozkurt</a>
+<nav aria-label="Ana menü"><a href="#alanlar">Çalışma alanları</a><a href="#avukat">Avukat</a><a href="#gorusme">İlk görüşme</a><a href="#sorular">Sorular</a><a href="#iletisim">İletişim</a></nav>
+<a class="hd-tel" href="tel:+905394607295">0539 460 72 95</a>
+</div></header>
+
+<main id="icerik">
+
+
+<div class="wrap govde">
+<div class="metin">
+<section class="antet">
+<h1 id="ad"><span class="ad">Av. Ahmet Bozkurt</span> <span class="unvan">Odunpazarı / Eskişehir</span></h1>
+<div class="cizgi" aria-hidden="true"></div>
+<p class="giris">Dava takibi ve hukuki danışmanlık. Görüşmeler randevu ile, büroda yapılır.</p>
+<div class="eylem"><a class="dugme" href="tel:+905394607295">Randevu için arayın</a><a class="ikincil" href="#iletisim">Adres ve çalışma saatleri</a></div>
+</section>
+
+<section class="bolum" id="alanlar">
+<h2>Çalışma alanları</h2>
+<p class="ac">Bu alanlarda dava öncesi danışmanlık verilir, dava ve icra takibinde vekillik yapılır.</p>
+<ul class="alanlar">
+<li><h3>Aile hukuku</h3><p>Anlaşmalı ve çekişmeli boşanma, nafaka, velayet, kişisel ilişki düzenlemesi, mal rejiminin tasfiyesi.</p></li>
+<li><h3>İş hukuku</h3><p>Kıdem ve ihbar tazminatı, fazla çalışma ve yıllık izin alacakları, işe iade, zorunlu arabuluculuk.</p></li>
+<li><h3>Kira hukuku</h3><p>Kira bedelinin tespiti ve uyarlanması, tahliye, kira alacağının takibi, kira sözleşmesinin hazırlanması.</p></li>
+<li><h3>Miras hukuku</h3><p>Mirasçılık belgesi, tenkis ve muris muvazaası davaları, ortaklığın giderilmesi, vasiyetname.</p></li>
+</ul>
+<p class="not"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">Liste örnektir; büronun çalıştığı alanlara göre düzenlenir.</span></p>
+</section>
+
+<section class="bolum" id="avukat">
+<h2>Avukat</h2>
+<p>Av. Ahmet Bozkurt <span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[üniversite]</span> Hukuk Fakültesi’nden <span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[yıl]</span> yılında mezun oldu, <span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[baro adı]</span> Barosu’na kayıtlı olarak avukatlık yapıyor.</p>
+<p>Görüşmeler Türkçe ve <span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[varsa ikinci dil]</span> yapılabilir.</p>
+</section>
+
+<section class="bolum basamak" id="gorusme">
+<h2>İlk görüşme</h2>
+<p><b>Randevu.</b> Telefonla ya da WhatsApp üzerinden gün ve saat belirlenir. Konunun kısa özeti bu aşamada sorulabilir.</p>
+<p><b>Görüşme.</b> Büroda elinizdeki belgeler birlikte okunur. İzlenebilecek hukuki yollar, olası süreler ve masraf kalemleri açıklanır.</p>
+<p><b>Vekâlet.</b> Takip kararı verirseniz ücret yazılı sözleşmeyle belirlenir, vekâletname noterden çıkarılır.</p>
+<div class="getir">
+<h3>Görüşmeye getirmeniz gerekenler</h3>
+<ul><li>Kimlik belgeniz</li><li>Varsa tebligat, dava ya da icra evrakı</li><li>Konuyla ilgili sözleşmeler</li><li>Yazışmalar, ödeme kayıtları, fotoğraflar</li></ul>
+</div>
+</section>
+
+<section class="bolum sss" id="sorular">
+<h2>Sorular</h2>
+<details><summary>Vekâletname nasıl çıkarılır?</summary><p>Herhangi bir noterde kimliğinizle birlikte, avukatın adı ve baro sicil bilgisi belirtilerek düzenlenir. Yurt dışındaysanız Türk konsoloslukları da vekâletname düzenleyebilir.</p></details>
+<details><summary>Avukatlık ücreti nasıl belirlenir?</summary><p>Ücret, işin niteliğine göre yazılı sözleşmeyle belirlenir. Türkiye Barolar Birliği’nin her yıl yayımladığı Avukatlık Asgari Ücret Tarifesi’nin altında olamaz.</p></details>
+<details><summary>Dava ne kadar sürer?</summary><p>Süre; davanın türüne, mahkemenin iş yüküne, bilirkişi incelemesi gerekip gerekmediğine göre değişir. Kesin süre taahhüt edilemez. İlk görüşmede dosyanızın hangi aşamalardan geçeceği anlatılır.</p></details>
+<details><summary>Başka şehirdeki bir dosya için de başvurabilir miyim?</summary><p>Avukatlar, kayıtlı oldukları barodan bağımsız olarak Türkiye’deki bütün mahkemelerde vekillik yapabilir. Duruşmalara katılımın ve yol masraflarının nasıl karşılanacağı görüşmede konuşulur.</p></details>
+</section>
+
+</div>
+
+<aside class="kunye" id="iletisim" aria-labelledby="kunye-b">
+<h2 id="kunye-b">Künye ve iletişim</h2>
+<dl>
+<div><dt>Baro</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[baro adı]</span></dd></div>
+<div><dt>Sicil no</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[00000]</span></dd></div>
+<div><dt>Adres</dt><dd>Kurtuluş, Pazaryolu Sk. No:7 D:2, 26090 Odunpazarı/Eskişehir<br><a href="https://www.google.com/maps/place/Av.+Ahmet+Bozkurt+-+Eski%C5%9Fehir+Avukat+-+Bozkurt+%26+Akan+Hukuk+B%C3%BCrosu/data=!4m7!3m6!1s0x14cc3d9798b1661d:0x6a8410a2795cf882!8m2!3d39.7660326!4d30.5332947!16s%2Fg%2F11_00lcx4k!19sChIJHWaxmJc9zBQRgvhceaIQhGo">Yol tarifi al</a></dd></div>
+<div><dt>Telefon</dt><dd><a class="tel" href="tel:+905394607295">0539 460 72 95</a></dd></div>
+<div><dt>WhatsApp</dt><dd><a href="https://wa.me/905394607295?text=Merhaba%2C%20Av.%20Ahmet%20Bozkurt%20web%20sitesinden%20yaz%C4%B1yorum.%20G%C3%B6r%C3%BC%C5%9Fme%20i%C3%A7in%20randevu%20almak%20istiyorum.">Mesaj yazın</a></dd></div>
+<div><dt>E-posta</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[e-posta adresi]</span></dd></div>
+<div><dt>Çalışma saatleri</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">Hafta içi 09.00-18.00</span></dd></div>
+</dl>
+<a class="dugme" href="tel:+905394607295">Randevu için arayın</a>
+</aside>
+</div>
+</main>
+
+<footer class="ab"><div class="wrap ab-in">
+<p>© 2026 Av. Ahmet Bozkurt. Bu site 1136 sayılı Avukatlık Kanunu ve Türkiye Barolar Birliği Reklam Yasağı Yönetmeliği çerçevesinde yalnız tanıtım bilgisi içerir. İçerik hukuki danışmanlık yerine geçmez.</p>
+<p><a href="#">KVKK Aydınlatma Metni</a></p>
+</div></footer>
+
+<nav class="mbar" aria-label="Hızlı iletişim"><a href="tel:+905394607295">Ara</a><a href="https://wa.me/905394607295?text=Merhaba%2C%20Av.%20Ahmet%20Bozkurt%20web%20sitesinden%20yaz%C4%B1yorum.%20G%C3%B6r%C3%BC%C5%9Fme%20i%C3%A7in%20randevu%20almak%20istiyorum.">WhatsApp</a><a href="https://www.google.com/maps/place/Av.+Ahmet+Bozkurt+-+Eski%C5%9Fehir+Avukat+-+Bozkurt+%26+Akan+Hukuk+B%C3%BCrosu/data=!4m7!3m6!1s0x14cc3d9798b1661d:0x6a8410a2795cf882!8m2!3d39.7660326!4d30.5332947!16s%2Fg%2F11_00lcx4k!19sChIJHWaxmJc9zBQRgvhceaIQhGo">Yol tarifi al</a></nav>
+<script>
+(function(){var h=document.getElementById('ad'),n=h&&h.querySelector('.ad');if(!n)return;
+var l=n.textContent.trim().length;if(l>60)h.classList.add('cokuzun');else if(l>28)h.classList.add('uzun');})();
+</script>
+</body>
+</html>

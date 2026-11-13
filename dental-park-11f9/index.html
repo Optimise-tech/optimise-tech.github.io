@@ -1,0 +1,332 @@
+<!doctype html>
+<!--
+TASARIM PLANI (diş hekimi, 14.11.2026)
+Renkler (klinik iç mekânından; tanımlar :root'ta oklch):
+  zemin #f3f8f9 (seramik fayans beyazı, hafif petrol), yüzey #fafdfd, petrol #065a64 (ünite döşemesi; tek vurgu),
+  derin petrol #083138 (saat panosu zemini), mürekkep #122125 (metin), ikincil #4d5e62 (alet çeliği grisi), çizgi #cfdcdd.
+Yazı: Onest tek aile (400 gövde, 500 ara başlık, 700 h1). Diğer şablonlarda kullanılmıyor; latin-ext var. Saatlerde tabular rakam.
+Düzen fikri: Hero bir kapı tabelası gibi: solda işletme adı + "Diş hekimi, semt/ilçe", sağda haftalık saat çizelgesi.
+  Sonra bölüm ritmi değişir: iki sütunlu düz tedavi listesi, üst çizgili 4 adım, asimetrik hekim künyesi, dar SSS, adres + tıklayınca yüklenen harita.
+Akılda kalıcı öğe: haftalık saat çizelgesi (08-20 ekseninde gün çubukları, bugünün satırı işaretli). Tek marka şekli: diş kavsi (U eğrisi).
+Eleştiri: koyu panel + açık sayfa "SaaS hero"ya kayabilir; panel gölgesiz, düz renk ve ince eksen çizgisiyle tablo gibi duracak.
+  Stok fotoğraf yok (gülümseme/diş klişesi riski); fotoğraf yeri dürüst çerçeve. Numara yalnız gerçekten sıralı ilk muayene adımlarında.
+  Aciliyet, fiyat, yorum, "en iyi" yok; "poliklinik" h1'de yok; harita üçüncü taraf çerezi yüzünden tıklanınca yüklenir.
+Sözleşme: demos.py SAMPLE['dis-hekimi'] değerleri, telefon üç biçimi, <a href="https://www.google.com/maps/place/Dental+park/data=!4m7!3m6!1s0x409fe0083a624d3b:0x42cfa194d5dcdc55!8m2!3d41.1695421!4d29.0544032!16s%2Fg%2F11fyzcpx4_!19sChIJO01iOgjgn0ARVdzc1ZShz0I">Yol tarifi al</a>, JSON-LD biçimi birebir korunur.
+-->
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dental Park | Diş hekimi, Eski, Sarıyer</title>
+<meta name="description" content="Dental Park, Eski, Sarıyer. Diş hekimi muayenesi, tedaviler, çalışma saatleri, adres ve randevu.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Dental Park | Diş hekimi, Eski, Sarıyer">
+<meta property="og:description" content="Dental Park, Eski, Sarıyer. Diş hekimi muayenesi, tedaviler, çalışma saatleri, adres ve randevu.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&display=swap">
+<style>
+:root{
+  --zemin:oklch(97.6% 0.006 200);
+  --yuzey:oklch(99.2% 0.003 200);
+  --petrol:oklch(43% 0.072 208);
+  --derin:oklch(29% 0.045 212);
+  --murekkep:oklch(23.5% 0.022 215);
+  --ikincil:oklch(47% 0.022 212);
+  --cizgi:oklch(88.5% 0.014 205);
+  --acik:oklch(94% 0.012 200);
+  --derin-ikincil:oklch(80% 0.025 205);
+  --cubuk:oklch(72% 0.07 195);
+  --font:'Onest',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--zemin);color:var(--murekkep);font:400 17px/1.55 var(--font)}
+h1,h2,h3{margin:0;font-weight:500;line-height:1.15;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-underline-offset:3px}
+ul,ol,dl,dd{margin:0;padding:0}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:8px;top:8px;z-index:100;background:var(--murekkep);color:var(--yuzey);padding:8px 12px}
+:focus-visible{outline:2px solid var(--petrol);outline-offset:3px}
+.demo-bar{font-size:14px;line-height:1.45;background:var(--murekkep);color:var(--acik);padding:8px 20px}
+.demo-bar b{font-weight:500;color:var(--yuzey)}
+.ph{text-decoration:underline dotted 1px;text-underline-offset:4px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+.mark{flex:none;color:var(--petrol)}
+
+/* başlık */
+.hd{border-bottom:1px solid var(--cizgi)}
+.hd-in{display:flex;align-items:center;gap:28px;min-height:68px}
+.hd-ad{display:flex;align-items:center;gap:10px;margin-right:auto;min-width:0;text-decoration:none;font-weight:500;font-size:16px}
+.hd-ad span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hd nav{display:flex;gap:24px;font-size:15px}
+.hd nav a{text-decoration:none;color:var(--ikincil)}
+.hd nav a:hover{color:var(--murekkep);text-decoration:underline}
+.hd-tel{font-weight:500;font-size:15px;white-space:nowrap;text-decoration:none;color:var(--petrol);font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{padding:72px 0 88px}
+.hero-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:start}
+.tabela{font-size:20px;font-weight:500;color:var(--petrol);max-width:28em}
+h1{font-weight:700;font-size:clamp(44px,6.2vw,84px);line-height:1.02;letter-spacing:-.025em;margin-top:18px}
+h1 .yer{display:block;font-weight:400;color:var(--ikincil);font-size:.56em;line-height:1.15;letter-spacing:-.01em;margin-top:.25em}
+.lede{margin-top:28px;font-size:19px;max-width:32em}
+.eylem{display:flex;flex-wrap:wrap;align-items:center;gap:14px 28px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:12px;min-height:52px;padding:0 24px;border-radius:6px;background:var(--petrol);color:var(--yuzey);font-weight:500;font-size:17px;text-decoration:none}
+.btn:hover{background:var(--derin)}
+.btn small{font-size:15px;font-weight:400;font-variant-numeric:tabular-nums}
+.ikinci{font-weight:500;color:var(--petrol)}
+
+/* saat çizelgesi: akılda kalıcı öğe */
+.cizelge{background:var(--derin);color:var(--acik);border-radius:14px;padding:28px 28px 24px}
+.cizelge h2{font-size:17px;font-weight:500;color:var(--yuzey)}
+.cz{width:100%;border-collapse:collapse;margin-top:18px;font-size:15px;font-variant-numeric:tabular-nums}
+.cz th,.cz td{padding:0;font-weight:400;text-align:left}
+.cz thead td{font-size:13px;color:var(--derin-ikincil);padding-bottom:6px}
+.eksen{position:relative;height:16px}
+.eksen span{position:absolute;top:0;transform:translateX(-50%)}
+.eksen span:first-child{transform:none}
+.eksen span:last-child{transform:translateX(-100%)}
+.cz tbody tr{border-top:1px solid color-mix(in oklch,var(--acik) 16%,transparent)}
+.cz tbody th{width:52px;padding:11px 0;color:var(--derin-ikincil)}
+.cz .iz{padding:0 14px 0 4px}
+.cz .zaman{width:104px;text-align:right;white-space:nowrap}
+.yol{position:relative;height:8px;border-radius:4px;background:color-mix(in oklch,var(--acik) 12%,transparent)}
+.yol i{position:absolute;top:0;bottom:0;left:calc((var(--a) - 8) / 12 * 100%);width:calc((var(--b) - var(--a)) / 12 * 100%);border-radius:4px;background:var(--cubuk);transform-origin:left;animation:uza .7s cubic-bezier(.2,.7,.2,1) both}
+.kapali{color:var(--derin-ikincil)}
+.cz tr.bugun th,.cz tr.bugun .zaman{color:var(--yuzey);font-weight:500}
+.cz tr.bugun th::after{content:"bugün";display:block;font-size:12px;font-weight:400;color:var(--cubuk);line-height:1.1}
+.cz-adres{margin-top:20px;padding-top:18px;border-top:1px solid color-mix(in oklch,var(--acik) 16%,transparent);font-size:15px;color:var(--acik)}
+.cz-adres a{color:var(--yuzey);font-weight:500}
+@keyframes uza{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* bölümler */
+.bolum{padding:96px 0;border-top:1px solid var(--cizgi)}
+.bolum h2{font-size:clamp(30px,3.4vw,42px);letter-spacing:-.015em}
+.giris{color:var(--ikincil);font-size:18px;max-width:36em;margin-top:14px}
+
+.tedavi{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px}
+.tlist{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;list-style:none}
+.tlist li{padding:20px 0 22px;border-top:1px solid var(--cizgi)}
+.tlist h3{font-size:18px}
+.tlist p{color:var(--ikincil);font-size:16px;margin-top:6px;max-width:30em}
+.not{margin-top:28px;font-size:16px;color:var(--ikincil);max-width:44em}
+
+.surec{background:var(--yuzey)}
+.adimlar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:32px;list-style:none;margin-top:48px;counter-reset:a}
+.adimlar li{counter-increment:a;padding-top:20px;border-top:2px solid var(--petrol)}
+.adimlar li::before{content:counter(a);display:block;font-size:15px;font-weight:500;color:var(--petrol);margin-bottom:12px}
+.adimlar h3{font-size:19px}
+.adimlar p{margin-top:8px;color:var(--ikincil);font-size:16px}
+
+.hekim{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,5fr) minmax(0,4fr);gap:48px;align-items:start}
+.foto{aspect-ratio:4/5;border:1px dashed var(--ikincil);border-radius:4px;display:grid;place-items:center;align-content:center;gap:12px;color:var(--ikincil);font-size:14px;text-align:center;padding:16px;background:var(--acik)}
+.kunye{margin-top:24px;border-top:1px solid var(--cizgi)}
+.kunye div{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--cizgi)}
+.kunye dt{color:var(--ikincil);font-size:15px}
+.kunye dd{font-weight:500}
+.hekim aside{font-size:16px;color:var(--ikincil);padding-top:6px}
+.hekim aside p+p{margin-top:12px}
+
+.sss{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px}
+.sss details{border-top:1px solid var(--cizgi)}
+.sss details:last-child{border-bottom:1px solid var(--cizgi)}
+.sss summary{cursor:pointer;padding:20px 0;font-weight:500;font-size:18px;list-style:none;display:flex;justify-content:space-between;gap:24px}
+.sss summary::-webkit-details-marker{display:none}
+.sss summary::after{content:"+";color:var(--petrol);font-weight:400;font-size:22px;line-height:1}
+.sss details[open] summary::after{content:"−"}
+.sss details p{padding:0 0 22px;color:var(--ikincil);max-width:40em}
+
+.iletisim{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:stretch}
+.bilgi{margin-top:28px}
+.bilgi div{padding:16px 0;border-top:1px solid var(--cizgi)}
+.bilgi dt{font-size:14px;color:var(--ikincil)}
+.bilgi dd{margin-top:3px;font-size:17px;font-weight:500}
+.bilgi dd a[href^="tel"]{font-variant-numeric:tabular-nums}
+.bilgi .yt{display:block;margin-top:6px;font-size:16px}
+.bilgi .yt a{color:var(--petrol)}
+.harita{position:relative;min-height:380px;border-radius:14px;background:var(--acik);border:1px solid var(--cizgi);display:grid;place-items:center;align-content:center;gap:16px;padding:32px;text-align:center;color:var(--ikincil);font-size:15px;overflow:hidden}
+.harita svg{color:var(--petrol)}
+.harita button{font:500 16px var(--font);min-height:48px;padding:0 22px;border-radius:6px;border:1px solid var(--petrol);background:var(--yuzey);color:var(--petrol);cursor:pointer}
+.harita button:hover{background:var(--petrol);color:var(--yuzey)}
+.harita iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.no-js .harita button{display:none}
+
+.ft{border-top:1px solid var(--cizgi);padding:36px 0 48px;font-size:14.5px;color:var(--ikincil)}
+.ft-in{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px 48px}
+.ft p+p{margin-top:6px}
+.ft strong{font-weight:500;color:var(--murekkep)}
+
+.mbar{display:none}
+@media (max-width:1000px){
+  .hd nav{display:none}
+  .hero-in{grid-template-columns:1fr;gap:48px}
+  .cizelge{max-width:560px}
+  .tedavi,.sss{grid-template-columns:1fr;gap:24px}
+  .adimlar{grid-template-columns:1fr 1fr;row-gap:40px}
+  .hekim{grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:40px}
+  .hekim aside{grid-column:2}
+  .iletisim{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:720px){
+  body{padding-bottom:64px}
+  .wrap{padding:0 20px}
+  .hd-tel{display:none}
+  .hero{padding:44px 0 64px}
+  .tabela{font-size:18px}
+  h1{font-size:clamp(42px,12vw,56px)}
+  h1 .yer{font-size:.52em}
+  .lede{font-size:18px}
+  .btn{width:100%;justify-content:center}
+  .cizelge{padding:22px 18px 20px}
+  .cz .zaman{width:96px}
+  .bolum{padding:64px 0}
+  .tlist{grid-template-columns:1fr}
+  .adimlar{grid-template-columns:1fr;gap:28px}
+  .hekim{grid-template-columns:1fr}
+  .hekim aside{grid-column:auto}
+  .foto{aspect-ratio:3/2;max-width:320px}
+  .kunye div{grid-template-columns:1fr;gap:2px}
+  .harita{min-height:300px}
+  .ft-in{grid-template-columns:1fr}
+  .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--yuzey);border-top:1px solid var(--cizgi)}
+  .mbar a{display:flex;align-items:center;justify-content:center;min-height:56px;font-weight:500;font-size:15px;text-decoration:none;color:var(--petrol)}
+  .mbar a+a{border-left:1px solid var(--cizgi)}
+  .mbar a:first-child{background:var(--petrol);color:var(--yuzey)}
+}
+@media (prefers-reduced-motion:reduce){.yol i{animation:none}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Dentist", "name": "Dental Park", "telephone": "+902122719595", "address": {"@type": "PostalAddress", "streetAddress": "Merkez Sırrı Bey sokak, Eski, Kaymakamlık Sokağı No:13, Sarıyer/İstanbul", "addressLocality": "Sarıyer", "addressRegion": "İstanbul", "addressCountry": "TR"}}</script>
+</head>
+<body class="no-js">
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<div class="demo-bar" role="note"><b>Tasarım önizlemesi.</b> Noktalı çizgiyle işaretli bilgiler örnektir; yayından önce sizinle birlikte doldurulur.</div>
+
+<header class="hd"><div class="wrap hd-in">
+<a class="hd-ad" href="#icerik"><svg class="mark" width="26" height="26" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M7 6c0 11 3.2 20 9 20s9-9 9-20"/></svg><span>Dental Park</span></a>
+<nav aria-label="Sayfa içi"><a href="#tedaviler">Tedaviler</a><a href="#ilk-muayene">İlk muayene</a><a href="#hekim">Hekim</a><a href="#sorular">Sorular</a><a href="#adres">Adres</a></nav>
+<a class="hd-tel" href="tel:+902122719595">0212 271 95 95</a>
+</div></header>
+
+<main id="icerik">
+<section class="hero"><div class="wrap hero-in">
+<div>
+<p class="tabela">Dental Park</p>
+<h1>Diş hekimi <span class="yer">Eski, Sarıyer</span></h1>
+<p class="lede">Muayene ve diş taşı temizliği, dolgu, kanal tedavisi, protez, implant ve ortodonti. Randevuyla çalışılır; tedavi planı muayeneden sonra yazılı olarak verilir.</p>
+<div class="eylem">
+<a class="btn" href="tel:+902122719595">Randevu için arayın <small>0212 271 95 95</small></a>
+<a class="ikinci" href="https://wa.me/902122719595?text=Merhaba%2C%20Dental%20Park%20web%20sitesinden%20yaz%C4%B1yorum.%20Muayene%20i%C3%A7in%20randevu%20almak%20istiyorum.">WhatsApp’tan yazın</a>
+</div>
+</div>
+
+<aside class="cizelge" aria-labelledby="saatler">
+<h2 id="saatler">Çalışma saatleri</h2>
+<table class="cz">
+<thead><tr><td></td><td class="iz"><div class="eksen" aria-hidden="true"><span style="left:0">08</span><span style="left:33.3%">12</span><span style="left:66.6%">16</span><span style="left:100%">20</span></div></td><td class="zaman">Saat</td></tr></thead>
+<tbody>
+<tr data-g="1"><th scope="row">Pzt</th><td class="iz"><div class="yol"><i style="--a:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">9</span>;--b:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">19</span>"></i></div></td><td class="zaman"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">09.00-19.00</span></td></tr>
+<tr data-g="2"><th scope="row">Sal</th><td class="iz"><div class="yol"><i style="--a:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">9</span>;--b:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">19</span>"></i></div></td><td class="zaman"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">09.00-19.00</span></td></tr>
+<tr data-g="3"><th scope="row">Çar</th><td class="iz"><div class="yol"><i style="--a:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">9</span>;--b:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">19</span>"></i></div></td><td class="zaman"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">09.00-19.00</span></td></tr>
+<tr data-g="4"><th scope="row">Per</th><td class="iz"><div class="yol"><i style="--a:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">9</span>;--b:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">19</span>"></i></div></td><td class="zaman"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">09.00-19.00</span></td></tr>
+<tr data-g="5"><th scope="row">Cum</th><td class="iz"><div class="yol"><i style="--a:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">9</span>;--b:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">19</span>"></i></div></td><td class="zaman"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">09.00-19.00</span></td></tr>
+<tr data-g="6"><th scope="row">Cmt</th><td class="iz"><div class="yol"><i style="--a:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">9</span>;--b:<span class=\"ph\" title=\"Örnek bilgi, yayından önce doldurulacak\">15</span>"></i></div></td><td class="zaman"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">09.00-15.00</span></td></tr>
+<tr data-g="0"><th scope="row">Paz</th><td class="iz"><div class="yol"></div></td><td class="zaman kapali"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">Kapalı</span></td></tr>
+</tbody>
+</table>
+<p class="cz-adres">Merkez Sırrı Bey sokak, Eski, Kaymakamlık Sokağı No:13, Sarıyer/İstanbul<br><a href="https://www.google.com/maps/place/Dental+park/data=!4m7!3m6!1s0x409fe0083a624d3b:0x42cfa194d5dcdc55!8m2!3d41.1695421!4d29.0544032!16s%2Fg%2F11fyzcpx4_!19sChIJO01iOgjgn0ARVdzc1ZShz0I">Yol tarifi al</a></p>
+</aside>
+</div></section>
+
+<section class="bolum" id="tedaviler"><div class="wrap tedavi">
+<div><h2>Tedaviler</h2><p class="giris">Her tedavi muayeneyle başlar. Hangi tedavinin gerektiği, kaç seans süreceği ve ücreti başlamadan önce konuşulur.</p></div>
+<div>
+<ul class="tlist">
+<li><h3>Muayene ve diş taşı temizliği</h3><p>Altı ayda bir kontrol, diş taşı temizliği, gerektiğinde röntgen.</p></li>
+<li><h3>Dolgu</h3><p>Çürüğün temizlenip dişin dolgu malzemesiyle onarılması.</p></li>
+<li><h3>Kanal tedavisi</h3><p>Dişin içindeki sinir dokusu iltihaplandığında dişi korumak için yapılır.</p></li>
+<li><h3>Diş çekimi</h3><p>Kurtarılamayan dişlerin ve gömülü yirmi yaş dişlerinin çekimi.</p></li>
+<li><h3>Protez ve kron</h3><p>Sabit köprü, kron, hareketli ve tam protezler.</p></li>
+<li><h3>İmplant</h3><p>Eksik dişin yerine çene kemiğine yerleştirilen vida ve üzerine yapılan diş.</p></li>
+<li><h3>Ortodonti</h3><p>Çapraşık dişlerde ve kapanış bozukluğunda tel ya da şeffaf plak.</p></li>
+<li><h3>Diş eti tedavisi</h3><p>Kanayan ya da çekilen diş etinde derin temizlik ve takip.</p></li>
+</ul>
+<p class="not">Liste, muayenehanede yapılan işlemlere göre yayından önce düzenlenir.</p>
+</div>
+</div></section>
+
+<section class="bolum surec" id="ilk-muayene"><div class="wrap">
+<h2>İlk muayene nasıl geçer</h2>
+<ol class="adimlar">
+<li><h3>Randevu</h3><p>Telefonla ya da WhatsApp’tan size uygun gün ve saat belirlenir.</p></li>
+<li><h3>Muayene</h3><p>Şikâyetiniz dinlenir, ağız içi muayene yapılır, gerekirse röntgen çekilir.</p></li>
+<li><h3>Tedavi planı</h3><p>Seçenekler, seans sayısı ve ücret tedaviye başlamadan önce yazılı olarak verilir.</p></li>
+<li><h3>Tedavi ve kontrol</h3><p>Onayınızdan sonra planlanan seanslar yapılır, kontrol tarihi birlikte belirlenir.</p></li>
+</ol>
+</div></section>
+
+<section class="bolum" id="hekim"><div class="wrap hekim">
+<div class="foto"><svg width="40" height="40" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M7 6c0 11 3.2 20 9 20s9-9 9-20"/></svg>Hekim fotoğrafı<br>sizden gelecek</div>
+<div>
+<h2>Hekim</h2>
+<dl class="kunye">
+<div><dt>Ad soyad</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">Dt. [Ad Soyad]</span></dd></div>
+<div><dt>Mezuniyet</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[Üniversite] Diş Hekimliği Fakültesi, [yıl]</span></dd></div>
+<div><dt>Uzmanlık</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[Varsa uzmanlık dalı]</span></dd></div>
+</dl>
+</div>
+<aside><p>Bu bölümde yalnız diploma ve kanuni uzmanlık bilgisi yer alır. Muayenehanede birden fazla hekim çalışıyorsa her biri aynı biçimde eklenir.</p><p>Görseller örnektir; yayında sizin fotoğraflarınız kullanılır.</p></aside>
+</div></section>
+
+<section class="bolum" id="sorular"><div class="wrap sss">
+<h2>Sorular</h2>
+<div>
+<details><summary>İlk muayene ne kadar sürer?</summary><p>Genellikle 20-30 dakika. Gerekirse aynı seansta röntgen çekilir ve tedavi seçenekleri anlatılır.</p></details>
+<details><summary>Muayeneye gelirken yanımda ne getirmeliyim?</summary><p>Kimliğiniz, düzenli kullandığınız ilaçların listesi ve varsa daha önce çekilmiş röntgenler. Kalp hastalığı, şeker hastalığı ya da kan sulandırıcı ilaç kullanımı gibi durumları muayenede belirtin.</p></details>
+<details><summary>Tedavi ücretini önceden öğrenebilir miyim?</summary><p>Evet. Muayeneden sonra tedavi seçenekleri ve ücretleri yazılı olarak verilir; onayınız olmadan işleme başlanmaz.</p></details>
+<details><summary>Randevu dışında bir sorun olursa ne yapmalıyım?</summary><p>Ağrı, şişlik ya da diş kırılması gibi durumlarda önce telefonla arayın; durumunuza göre size bir randevu saati verilir. Yüze ya da boyuna yayılan şişlik, yüksek ateş ya da yutma güçlüğü varsa 112’yi arayın veya en yakın acil servise başvurun.</p></details>
+<details><summary>Çocuklar kaç yaşında ilk kez muayene olmalı?</summary><p>İlk süt dişi çıktıktan sonra, en geç bir yaşında ilk kontrol önerilir. Sonrasında altı ayda bir kontrol yeterlidir.</p></details>
+</div>
+</div></section>
+
+<section class="bolum" id="adres"><div class="wrap iletisim">
+<div>
+<h2>Adres ve iletişim</h2>
+<dl class="bilgi">
+<div><dt>Adres</dt><dd>Merkez Sırrı Bey sokak, Eski, Kaymakamlık Sokağı No:13, Sarıyer/İstanbul<span class="yt"><a href="https://www.google.com/maps/place/Dental+park/data=!4m7!3m6!1s0x409fe0083a624d3b:0x42cfa194d5dcdc55!8m2!3d41.1695421!4d29.0544032!16s%2Fg%2F11fyzcpx4_!19sChIJO01iOgjgn0ARVdzc1ZShz0I">Yol tarifi al</a></span></dd></div>
+<div><dt>Telefon</dt><dd><a href="tel:+902122719595">0212 271 95 95</a></dd></div>
+<div><dt>WhatsApp</dt><dd><a href="https://wa.me/902122719595?text=Merhaba%2C%20Dental%20Park%20web%20sitesinden%20yaz%C4%B1yorum.%20Muayene%20i%C3%A7in%20randevu%20almak%20istiyorum.">Mesaj gönderin</a></dd></div>
+<div><dt>E-posta</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[e-posta adresi]</span></dd></div>
+<div><dt>Anlaşmalı kurumlar</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[Varsa kurum ve sigorta anlaşmaları]</span></dd></div>
+</dl>
+</div>
+<div class="harita" data-src="https://maps.google.com/maps?q=Merkez%20S%C4%B1rr%C4%B1%20Bey%20sokak%2C%20Eski%2C%20Kaymakaml%C4%B1k%20Soka%C4%9F%C4%B1%20No%3A13%2C%20Sar%C4%B1yer/%C4%B0stanbul&amp;z=16&amp;output=embed">
+<svg width="44" height="44" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M7 6c0 11 3.2 20 9 20s9-9 9-20"/></svg>
+<button type="button">Haritayı göster</button>
+<p>Harita Google tarafından sunulur ve düğmeye basınca yüklenir.</p>
+</div>
+</div></section>
+</main>
+
+<footer class="ft"><div class="wrap ft-in">
+<div>
+<p><strong>Dental Park</strong>, Eski, Sarıyer</p>
+<p>Sorumlu hekim (mesul müdür) ve içerik sorumlusu: <span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[Dt. Ad Soyad, e-posta]</span></p>
+<p>Bu sayfadaki bilgiler genel bilgilendirme amaçlıdır; tanı ve tedavi için muayene gerekir.</p>
+</div>
+<div>
+<p>Son güncelleme: 14.11.2026</p>
+<p><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[KVKK aydınlatma metni]</span></p>
+</div>
+</div></footer>
+
+<nav class="mbar" aria-label="Hızlı iletişim"><a href="tel:+902122719595">Ara</a><a href="https://wa.me/902122719595?text=Merhaba%2C%20Dental%20Park%20web%20sitesinden%20yaz%C4%B1yorum.%20Muayene%20i%C3%A7in%20randevu%20almak%20istiyorum.">WhatsApp</a><a href="https://www.google.com/maps/place/Dental+park/data=!4m7!3m6!1s0x409fe0083a624d3b:0x42cfa194d5dcdc55!8m2!3d41.1695421!4d29.0544032!16s%2Fg%2F11fyzcpx4_!19sChIJO01iOgjgn0ARVdzc1ZShz0I">Yol tarifi al</a></nav>
+
+<script>
+(function(){var d=document;d.body.classList.remove('no-js');
+var r=d.querySelector('.cz tr[data-g="'+new Date().getDay()+'"]');if(r)r.classList.add('bugun');
+var h=d.querySelector('.harita');if(!h)return;var b=h.querySelector('button');
+b.addEventListener('click',function(){var f=d.createElement('iframe');f.src=h.getAttribute('data-src');f.title='Muayenehanenin konumu';f.loading='lazy';h.appendChild(f);b.remove()})})();
+</script>
+</body>
+</html>
