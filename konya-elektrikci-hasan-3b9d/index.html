@@ -1,0 +1,274 @@
+<!doctype html>
+<!--
+TASARIM PLANI (hizmet: nakliyat, tadilat, klima-kombi, hali-yikama, mobilya; 16.11.2026)
+Renkler (oklch, :root; nötrler vurgunun sarı tonuna çok hafif çekili):
+  zemin    97%   .004 95   şantiye sıvası; düz, kremden uzak (krom ~0)
+  yüzey    99.4% .002 95   adım şeridi ve fotoğraf çerçevesi zemini
+  asfalt   24%   .014 255  metin, düğme yazısı, kalın üst çizgiler
+  ikincil  45%   .014 255  açıklama metni
+  çizgi    86%   .006 95   ince ayraç
+  sarı     84%   .165 85   iş makinesi / yol çizgisi sarısı; TEK vurgu: ana düğme zemini ve rota çizgisi (metin rengi değil)
+Yazı: Archivo (tek aile, wdth ekseni). Başlıklar dar (wdth 72-78, 750-800), gövde normal genişlik 400/500.
+  Kılavuz listesindeki 8 aile eski 5 şablonda kullanılmış; çakışmasın diye listede olmayan Archivo seçildi.
+  latin-ext alt kümesi Google Fonts css2 yanıtında doğrulandı (16.11.2026). Kamyonet/tabela yazısına yakın dar grotesk.
+Düzen fikri: tabela gibi tam genişlikte dar ve kalın h1; altında "teklif şeridi" (solda tek ana eylem, sağda
+  fotoğraf -> WhatsApp -> teklif rotası); sonra iki sütun düz hizmet listesi, asimetrik iş galerisi (bir büyük + üç küçük),
+  dev puntolu "hizmet bölgesi" (ilçe adı tabela yazısı gibi), üç sütunlu saat/adres/iletişim.
+Akılda kalıcı öğe: sarı rota çizgisiyle bağlanan 3 adım (gerçekten sıralı olduğu için numaralı) ve ilçe adının dev yazısı.
+Eleştiri: sarı + koyu "yakın siyah + asit vurgu"ya kayabilir; bu yüzden koyu bant yok, zemin açık, sarı yalnız iki yerde.
+  Kart yok, gölge yok, eyebrow yok, ok işareti yok. Sahte fotoğraf yok: galeri dürüst boş çerçeve. Fiyat, yorum, puan yok.
+  Harita iframe'i yok (üçüncü taraf çerez); yalnız "Yol tarifi al".
+Kategori blokları: ("kat:anahtar" açılış ve "/kat" kapanış yorumları arasındaki metin; demos.apply_kat). Sözleşme: SAMPLE['hizmet'] ad/adres/mahalle,
+  telefon üç biçimi, <a href="https://www.google.com/maps/place/Konya+Elektrik%C3%A7i+Hasan+Usta/data=!4m7!3m6!1s0xac8a8b29a35426e7:0x606c10ab1bfada85!8m2!3d37.8580093!4d32.5148806!16s%2Fg%2F11xzp5kqfv!19sChIJ5yZUoymLiqwRhdr6G6sQbGA">Yol tarifi al</a>, JSON-LD "anahtar": "değer" biçimi birebir.
+-->
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elektrikçi Hasan Usta | Tadilat, boya ve tesisat, Karatay</title>
+<meta name="description" content="Elektrikçi Hasan Usta, Hamzaoğlu, Karatay. Tadilat, boya ve tesisat; fotoğrafı WhatsApp’tan gönderin, teklif alın. Hizmet bölgesi, çalışma saatleri ve adres.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Elektrikçi Hasan Usta | Karatay">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..800&display=swap">
+<style>
+:root{
+  --zemin:oklch(97% 0.004 95);
+  --yuzey:oklch(99.4% 0.002 95);
+  --asfalt:oklch(24% 0.014 255);
+  --ikincil:oklch(45% 0.014 255);
+  --cizgi:oklch(86% 0.006 95);
+  --sari:oklch(84% 0.165 85);
+  --cerceve:oklch(93.5% 0.006 95);
+  --font:'Archivo',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--zemin);color:var(--asfalt);font:400 17px/1.55 var(--font)}
+h1,h2,h3{margin:0;overflow-wrap:break-word;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-underline-offset:3px}
+ul,ol,dl,dd{margin:0;padding:0}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:8px;top:8px;z-index:100;background:var(--asfalt);color:var(--yuzey);padding:8px 12px}
+:focus-visible{outline:3px solid var(--asfalt);outline-offset:3px}
+.demo-bar{font-size:14px;line-height:1.45;background:var(--asfalt);color:var(--cerceve);padding:8px 20px}
+.demo-bar b{font-weight:600;color:var(--yuzey)}
+.ph{text-decoration:underline dotted 1px;text-underline-offset:4px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 40px}
+.dar{font-stretch:76%}
+
+/* başlık */
+.hd{border-bottom:1px solid var(--cizgi)}
+.hd-in{display:flex;align-items:center;gap:32px;min-height:64px}
+.hd-ad{margin-right:auto;min-width:0;font-weight:700;font-stretch:78%;font-size:22px;text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd nav{display:flex;gap:24px;font-size:15px}
+.hd nav a{text-decoration:none;color:var(--ikincil)}
+.hd nav a:hover{color:var(--asfalt);text-decoration:underline}
+.hd-tel{font-weight:600;font-size:16px;white-space:nowrap;text-decoration:none;font-variant-numeric:tabular-nums}
+
+/* hero */
+.hero{padding:56px 0 0}
+.kunye-ust{font-size:17px;color:var(--ikincil)}
+.kunye-ust b{color:var(--asfalt);font-weight:600}
+h1{font-weight:800;font-stretch:72%;font-size:clamp(46px,7.6vw,112px);line-height:.94;letter-spacing:-.012em;max-width:15ch;margin-top:14px}
+.lede{margin-top:28px;font-size:19px;max-width:40em}
+
+.teklif{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;margin-top:56px;padding:40px 0 64px;border-top:3px solid var(--asfalt)}
+.teklif-baslik{font-weight:750;font-stretch:78%;font-size:clamp(28px,2.8vw,38px);line-height:1.08}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;margin-top:24px;padding:0 26px;border-radius:3px;background:var(--sari);color:var(--asfalt);font-weight:650;font-size:18px;text-decoration:none}
+.btn:hover{background:var(--asfalt);color:var(--sari)}
+.btn svg{flex:none}
+.ikinci{margin-top:16px;font-size:16px;color:var(--ikincil)}
+.ikinci a{color:var(--asfalt);font-weight:600;font-variant-numeric:tabular-nums}
+
+/* rota: akılda kalıcı öğe */
+.rota{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;list-style:none;counter-reset:r;padding-top:8px}
+.rota::before{content:"";position:absolute;left:22px;right:22px;top:29px;height:6px;background:var(--sari);transform-origin:left;animation:rota .9s cubic-bezier(.25,.7,.2,1) .15s both}
+.rota li{position:relative;counter-increment:r}
+.rota li::before{content:counter(r);display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--asfalt);color:var(--yuzey);font-weight:700;font-size:18px;position:relative}
+.rota h3{font-weight:700;font-stretch:80%;font-size:23px;line-height:1.1;margin-top:18px}
+.rota p{margin-top:8px;font-size:16px;color:var(--ikincil)}
+@keyframes rota{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+
+/* bölümler */
+.bolum{padding:88px 0;border-top:1px solid var(--cizgi)}
+.bolum h2{font-weight:800;font-stretch:74%;font-size:clamp(34px,4vw,54px);line-height:1}
+.notu{margin-top:14px;font-size:16px;color:var(--ikincil);max-width:30em}
+
+.hizmet{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px}
+.hlist{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;list-style:none}
+.hlist li{padding:18px 0 20px;border-top:1px solid var(--cizgi)}
+.hlist li:nth-child(-n+2){border-top:3px solid var(--asfalt)}
+.hlist h3{font-weight:650;font-size:19px}
+.hlist p{margin-top:4px;font-size:16px;color:var(--ikincil)}
+
+.isler-ust{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:12px 48px}
+.galeri{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr) minmax(0,5fr);grid-template-rows:auto auto;gap:16px;margin-top:40px}
+.foto{display:grid;place-items:center;align-content:center;gap:10px;min-height:220px;border:1.5px dashed var(--ikincil);border-radius:3px;background:var(--cerceve);color:var(--ikincil);font-size:15px;text-align:center;padding:16px}
+.foto:first-child{grid-row:span 2;min-height:460px}
+.foto:last-child{grid-column:span 2}
+
+.bolge{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;align-items:end}
+.bolge>div:last-child{container-type:inline-size}
+.bolge-ad{font-weight:800;font-stretch:66%;font-size:clamp(44px,17cqi,168px);line-height:.88;letter-spacing:-.01em;overflow-wrap:break-word}
+.bolge-not{margin-top:22px;font-size:18px;max-width:34em}
+.bolge-not+.bolge-not{margin-top:8px;color:var(--ikincil);font-size:16px}
+
+.bilgi{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin-top:40px}
+.bilgi section{border-top:3px solid var(--asfalt);padding-top:18px}
+.bilgi h3{font-weight:700;font-stretch:80%;font-size:22px}
+.bilgi dl{margin-top:12px}
+.bilgi dl div{display:flex;justify-content:space-between;gap:16px;padding:10px 0;border-bottom:1px solid var(--cizgi);font-variant-numeric:tabular-nums}
+.bilgi dt{color:var(--ikincil)}
+.bilgi dd{font-weight:600;text-align:right}
+.bilgi address{font-style:normal;margin-top:12px;font-size:18px}
+.yt{margin-top:12px;font-weight:600}
+.yt a{text-decoration-thickness:2px;text-decoration-color:var(--sari)}
+.bilgi .yt a:hover{background:var(--sari)}
+
+.ft{border-top:1px solid var(--cizgi);padding:32px 0 48px;font-size:14.5px;color:var(--ikincil)}
+.ft-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 40px}
+.ft strong{font-weight:600;color:var(--asfalt)}
+
+.mbar{display:none}
+@media (max-width:1000px){
+  .hd nav{display:none}
+  .teklif{grid-template-columns:1fr;gap:40px}
+  .hizmet,.bolge{grid-template-columns:1fr;gap:24px}
+  .bilgi{grid-template-columns:1fr 1fr}
+}
+@media (max-width:720px){
+  body{padding-bottom:64px}
+  .wrap{padding:0 20px}
+  .hd-tel{display:none}
+  .hd-ad{font-size:20px}
+  .hero{padding-top:36px}
+  h1{font-size:clamp(40px,12vw,60px)}
+  .lede{font-size:18px}
+  .teklif{margin-top:40px;padding:32px 0 48px}
+  .btn{width:100%;padding:0 14px;font-size:17px}
+  .rota{grid-template-columns:1fr;gap:22px;padding-left:0}
+  .rota::before{left:19px;right:auto;top:22px;bottom:22px;width:6px;height:auto;transform-origin:top;animation-name:rota-d}
+  .rota li{display:grid;grid-template-columns:44px 1fr;column-gap:18px}
+  .rota li::before{grid-row:span 2}
+  .rota h3{margin-top:8px;font-size:21px}
+  .rota p{grid-column:2}
+  .bolum{padding:60px 0}
+  .hlist{grid-template-columns:1fr}
+  .hlist li:nth-child(2){border-top:1px solid var(--cizgi)}
+  .galeri{grid-template-columns:1fr 1fr}
+  .foto{min-height:150px}
+  .foto:first-child{grid-row:auto;grid-column:span 2;min-height:220px}
+  .foto:last-child{grid-column:span 2}
+  .bilgi{grid-template-columns:1fr;gap:32px}
+  .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--yuzey);border-top:1px solid var(--cizgi)}
+  .mbar a{display:flex;align-items:center;justify-content:center;min-height:56px;font-weight:600;font-size:15px;text-decoration:none}
+  .mbar a+a{border-left:1px solid var(--cizgi)}
+  .mbar a:nth-child(2){background:var(--sari)}
+}
+@keyframes rota-d{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+@media (prefers-reduced-motion:reduce){.rota::before{animation:none}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "GeneralContractor", "name": "Elektrikçi Hasan Usta", "telephone": "+905462902772", "areaServed": "Konya", "address": {"@type": "PostalAddress", "streetAddress": "Hamzaoğlu, Sarı Yakup Cd. No:118 D:C, 42000 Karatay/Konya", "addressLocality": "Karatay", "addressRegion": "Konya", "addressCountry": "TR"}}</script>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<div class="demo-bar" role="note"><b>Tasarım önizlemesi.</b> Görseller örnektir; noktalı çizgiyle işaretli bilgiler yayından önce sizinle birlikte doldurulur.</div>
+
+<header class="hd"><div class="wrap hd-in">
+<a class="hd-ad" href="#icerik">Elektrikçi Hasan Usta</a>
+<nav aria-label="Sayfa içi"><a href="#hizmetler">Hizmetler</a><a href="#isler">Yapılan işler</a><a href="#bolge">Hizmet bölgesi</a><a href="#adres">Adres</a></nav>
+<a class="hd-tel" href="tel:+905462902772">0546 290 27 72</a>
+</div></header>
+
+<main id="icerik">
+<section class="hero"><div class="wrap">
+<p class="kunye-ust"><b>Elektrikçi Hasan Usta</b>, Hamzaoğlu, Karatay</p>
+<h1>Karatay’da tadilat, boya ve tesisat</h1>
+<p class="lede">Boya badana, alçı, fayans, su ve elektrik tesisatı, mutfak ve banyo yenileme. Fiyat; işin yerine, ölçüsüne ve malzemeye göre verilir.</p>
+
+<div class="teklif">
+<div>
+<p class="teklif-baslik">Fotoğrafını WhatsApp’tan gönderin, teklif verelim.</p>
+<a class="btn" href="https://wa.me/905462902772?text=Merhaba%2C%20Elektrik%C3%A7i%20Hasan%20Usta%20web%20sitesinden%20yaz%C4%B1yorum.%20Foto%C4%9Fraflar%C4%B1%20g%C3%B6nderiyorum%2C%20teklif%20almak%20istiyorum."><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></svg>WhatsApp’tan fotoğraf gönderin</a>
+<p class="ikinci">Telefonla da ulaşabilirsiniz: <a href="tel:+905462902772">0546 290 27 72</a></p>
+</div>
+<ol class="rota" aria-label="Teklif nasıl alınır">
+<li><h3>Fotoğraf çekin</h3><p>Yapılacak yerin fotoğrafını çekin, yaklaşık ölçüsünü not edin.</p></li>
+<li><h3>WhatsApp’tan gönderin</h3><p>Semtinizi ve size uygun günü ekleyin.</p></li>
+<li><h3>Teklifi alın</h3><p>Fiyat ve iş günü mesajla bildirilir. Gerekirse yerinde bakılır.</p></li>
+</ol>
+</div>
+</div></section>
+
+<section class="bolum" id="hizmetler"><div class="wrap hizmet">
+<div><h2>Hizmetler</h2><p class="notu">Liste yayından önce yaptığınız işlere göre düzenlenir.</p></div>
+<ul class="hlist">
+
+<li><h3>Boya ve badana</h3><p>İç cephe, tavan, kapı ve pencere boyası.</p></li>
+<li><h3>Alçı ve alçıpan</h3><p>Duvar düzeltme, asma tavan, bölme duvar.</p></li>
+<li><h3>Fayans ve seramik</h3><p>Banyo, mutfak ve zemin kaplaması.</p></li>
+<li><h3>Su tesisatı</h3><p>Kaçak tespiti, boru yenileme, batarya ve klozet değişimi.</p></li>
+<li><h3>Elektrik tesisatı</h3><p>Priz, anahtar, aydınlatma ve sigorta kutusu işleri.</p></li>
+<li><h3>Mutfak ve banyo yenileme</h3><p>Söküm, tesisat, kaplama ve montaj bir arada.</p></li>
+
+
+
+</ul>
+</div></section>
+
+<section class="bolum" id="isler"><div class="wrap">
+<div class="isler-ust"><h2>Yapılan işler</h2><p class="notu">Fotoğraflar sizden gelir; her birinin altına işin yapıldığı semt yazılır.</p></div>
+<div class="galeri">
+<div class="foto"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></svg>İş fotoğrafı</div>
+<div class="foto">İş fotoğrafı</div>
+<div class="foto">İş fotoğrafı</div>
+<div class="foto">İş fotoğrafı</div>
+</div>
+</div></section>
+
+<section class="bolum" id="bolge"><div class="wrap bolge">
+<div><h2>Hizmet bölgesi</h2></div>
+<div>
+<p class="bolge-ad">Karatay</p>
+<p class="bolge-not">Konya’da gidilen diğer ilçeler: <span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[İlçe adları]</span></p>
+<p class="bolge-not">Adresiniz listede yoksa WhatsApp’tan sorun.</p>
+</div>
+</div></section>
+
+<section class="bolum" id="adres"><div class="wrap">
+<h2>Saatler ve adres</h2>
+<div class="bilgi">
+<section>
+<h3>Çalışma saatleri</h3>
+<dl>
+<div><dt>Pazartesi-Cumartesi</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">08.00-19.00</span></dd></div>
+<div><dt>Pazar</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">Kapalı</span></dd></div>
+</dl>
+</section>
+<section>
+<h3>Adres</h3>
+<address>Hamzaoğlu, Sarı Yakup Cd. No:118 D:C, 42000 Karatay/Konya</address>
+<p class="yt"><a href="https://www.google.com/maps/place/Konya+Elektrik%C3%A7i+Hasan+Usta/data=!4m7!3m6!1s0xac8a8b29a35426e7:0x606c10ab1bfada85!8m2!3d37.8580093!4d32.5148806!16s%2Fg%2F11xzp5kqfv!19sChIJ5yZUoymLiqwRhdr6G6sQbGA">Yol tarifi al</a></p>
+</section>
+<section>
+<h3>İletişim</h3>
+<dl>
+<div><dt>Telefon</dt><dd><a href="tel:+905462902772">0546 290 27 72</a></dd></div>
+<div><dt>WhatsApp</dt><dd><a href="https://wa.me/905462902772?text=Merhaba%2C%20Elektrik%C3%A7i%20Hasan%20Usta%20web%20sitesinden%20yaz%C4%B1yorum.%20Foto%C4%9Fraflar%C4%B1%20g%C3%B6nderiyorum%2C%20teklif%20almak%20istiyorum.">Mesaj gönderin</a></dd></div>
+
+</dl>
+</section>
+</div>
+</div></section>
+</main>
+
+<footer class="ft"><div class="wrap ft-in">
+<p><strong>Elektrikçi Hasan Usta</strong>, Hamzaoğlu, Karatay</p>
+<p>Son güncelleme: 23.11.2026</p>
+</div></footer>
+
+<nav class="mbar" aria-label="Hızlı iletişim"><a href="tel:+905462902772">Ara</a><a href="https://wa.me/905462902772?text=Merhaba%2C%20Elektrik%C3%A7i%20Hasan%20Usta%20web%20sitesinden%20yaz%C4%B1yorum.%20Foto%C4%9Fraflar%C4%B1%20g%C3%B6nderiyorum%2C%20teklif%20almak%20istiyorum.">WhatsApp</a><a href="https://www.google.com/maps/place/Konya+Elektrik%C3%A7i+Hasan+Usta/data=!4m7!3m6!1s0xac8a8b29a35426e7:0x606c10ab1bfada85!8m2!3d37.8580093!4d32.5148806!16s%2Fg%2F11xzp5kqfv!19sChIJ5yZUoymLiqwRhdr6G6sQbGA">Yol tarifi al</a></nav>
+</body>
+</html>
