@@ -1,0 +1,225 @@
+<!doctype html>
+<!--
+TASARIM PLANI (guzellik + organizasyon, 16.11.2026)
+Renkler (oklch, :root; nötrler kına kırmızısına hafif çekili, pembe değil pudra):
+  zemin    96.8% .009 15   pudra; krom çok düşük, krem (sarı) tarafında değil
+  yüzey    99.2% .003 15   çerçeve içi
+  mürekkep 24%   .025 15   kahve-siyah metin
+  ikincil  46%   .025 15   açıklama
+  çizgi    87%   .014 15   ince ayraç
+  kına     45%   .16  20   kına gecesi ve ruj kırmızısı; TEK vurgu: ana düğme, grup başlığı çizgisi, bağlantı altı
+Yazı: Bodoni Moda (yalnız ad ve başlıklar, 500; italik yok) + Jost (gövde, arayüz 400/500). Moda dergisi ve salon
+  vitrini yazısı. İkisi de kılavuz listesinde yok (liste eski 5 şablonda tükendi); latin-ext Google Fonts css2
+  yanıtında doğrulandı (16.11.2026). Playfair/Cormorant değil.
+Düzen fikri: dergi sayfası gibi asimetrik: solda dev Bodoni işletme adı, altında küçük h1 (meslek + yer) ve tek eylem;
+  sağda aşağı kaydırılmış dikey fotoğraf çerçevesi. Sonra "menü": grup adları büyük Bodoni, hizmetler yanında düz liste
+  (fiyat yok); paket satırları yer tutucu; galeri farklı boylu çerçeveler; en altta saat + adres iki sütun.
+Akılda kalıcı öğe: dergi içindekiler sayfası gibi kurulan hizmet menüsü (büyük Bodoni grup adı + ince kına çizgisi).
+Eleştiri: pembe + serif "AI güzellik şablonu"na kayabilir; bu yüzden pastel pembe yok (pudra neredeyse nötr), kemer
+  ya da oval kesimli fotoğraf yok, italik vurgu yok, yüzen rozet yok. Fiyat, paket içeriği, yorum, puan uydurma yok.
+Kategori blokları: guzellik / organizasyon ("kat:anahtar" açılış ve "/kat" kapanış yorumları arasındaki metin; demos.apply_kat).
+Sözleşme: SAMPLE['guzellik'] ad/adres/mahalle, telefon üç biçimi, <a href="https://www.google.com/maps/place/Maya+Organizasyon-Davet+Evi/data=!4m7!3m6!1s0x14d33b0a8191d1bd:0xbccd4a33c3b03757!8m2!3d39.8933411!4d32.6210081!16s%2Fg%2F11ww4_61g6!19sChIJvdGRgQo70xQRVzewwzNKzbw">Yol tarifi al</a>, JSON-LD biçimi birebir.
+-->
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maya Organizasyon | Düğün, kına ve nişan organizasyonu, Bağlıca, Etimesgut</title>
+<meta name="description" content="Maya Organizasyon, Bağlıca, Etimesgut. Kına, nişan, söz ve düğün organizasyonu; WhatsApp’tan tarih sorun. Çalışma saatleri ve adres.">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Maya Organizasyon | Bağlıca, Etimesgut">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,500&family=Jost:wght@400;500&display=swap">
+<style>
+:root{
+  --zemin:oklch(96.8% 0.009 15);
+  --yuzey:oklch(99.2% 0.003 15);
+  --murekkep:oklch(24% 0.025 15);
+  --ikincil:oklch(46% 0.025 15);
+  --cizgi:oklch(87% 0.014 15);
+  --kina:oklch(45% 0.16 20);
+  --kina-koyu:oklch(36% 0.13 20);
+  --cerceve:oklch(93.5% 0.012 15);
+  --serif:'Bodoni Moda',Georgia,serif;
+  --font:'Jost',system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--zemin);color:var(--murekkep);font:400 17px/1.6 var(--font)}
+h1,h2,h3{margin:0;font-weight:500;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit;text-underline-offset:4px}
+ul,dl,dd{margin:0;padding:0}
+.skip{position:absolute;left:-999px;top:0}
+.skip:focus{left:8px;top:8px;z-index:100;background:var(--murekkep);color:var(--yuzey);padding:8px 12px}
+:focus-visible{outline:2px solid var(--kina);outline-offset:3px}
+.demo-bar{font-size:14px;line-height:1.45;background:var(--murekkep);color:var(--cerceve);padding:8px 20px}
+.demo-bar b{font-weight:500;color:var(--yuzey)}
+.ph{text-decoration:underline dotted 1px;text-underline-offset:4px}
+.wrap{max-width:1220px;margin:0 auto;padding:0 40px}
+.serif{font-family:var(--serif);font-optical-sizing:auto}
+
+.hd-in{display:flex;align-items:center;gap:28px;min-height:72px;border-bottom:1px solid var(--cizgi)}
+.hd-ad{margin-right:auto;min-width:0;font:500 22px/1.1 var(--serif);text-decoration:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hd nav{display:flex;gap:26px;font-size:16px}
+.hd nav a{text-decoration:none;color:var(--ikincil)}
+.hd nav a:hover{color:var(--murekkep);text-decoration:underline}
+
+.hero{padding:72px 0 96px}
+.hero-in{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:72px;align-items:start}
+.hero-in>div:first-child{container-type:inline-size}
+.marka{font:500 clamp(40px,12cqi,124px)/.98 var(--serif);letter-spacing:-.02em;overflow-wrap:break-word;hyphens:manual;animation:gel .9s cubic-bezier(.2,.7,.2,1) both}
+h1{font-size:clamp(20px,1.8vw,24px);font-weight:500;line-height:1.35;margin-top:28px;padding-top:20px;border-top:1px solid var(--murekkep);max-width:26em}
+.lede{margin-top:14px;font-size:18px;color:var(--ikincil);max-width:32em}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;margin-top:32px;padding:0 28px;background:var(--kina);color:var(--yuzey);font-weight:500;font-size:17px;text-decoration:none;border-radius:1px}
+.btn:hover{background:var(--kina-koyu)}
+.ara{margin-top:16px;font-size:16px;color:var(--ikincil)}
+.ara a{color:var(--murekkep);font-weight:500;font-variant-numeric:tabular-nums}
+.foto{display:grid;place-items:center;align-content:center;gap:8px;border:1px dashed var(--ikincil);background:var(--cerceve);color:var(--ikincil);font-size:15px;text-align:center;padding:16px}
+.hero .foto{aspect-ratio:3/4;margin-top:96px}
+@keyframes gel{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+.bolum{padding:96px 0;border-top:1px solid var(--cizgi)}
+.bolum h2{font:500 clamp(34px,3.8vw,52px)/1.05 var(--serif);letter-spacing:-.01em}
+.notu{margin-top:12px;font-size:16px;color:var(--ikincil);max-width:34em}
+
+/* menü: akılda kalıcı öğe */
+.menu{margin-top:48px}
+.grup{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px;padding:28px 0 30px;border-top:1px solid var(--cizgi)}
+.grup:first-child{border-top:2px solid var(--kina)}
+.grup h3{font:500 clamp(30px,3.4vw,46px)/1.05 var(--serif)}
+.grup ul{list-style:none;columns:2;column-gap:40px}
+.grup li{break-inside:avoid;padding:6px 0;font-size:18px}
+
+.paket{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px}
+.prow{display:flex;justify-content:space-between;gap:24px;padding:22px 0;border-bottom:1px solid var(--cizgi);font-size:19px}
+.prow:first-child{border-top:1px solid var(--cizgi)}
+.prow small{font-size:15px;color:var(--ikincil);white-space:nowrap}
+
+.galeri{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-top:40px}
+.galeri .foto:nth-child(1){grid-column:1/6;grid-row:1/3;min-height:520px}
+.galeri .foto:nth-child(2){grid-column:6/10;aspect-ratio:1}
+.galeri .foto:nth-child(3){grid-column:10/13;aspect-ratio:3/4;margin-top:56px}
+.galeri .foto:nth-child(4){grid-column:6/9;grid-row:2;aspect-ratio:4/3}
+.galeri .foto:nth-child(5){grid-column:9/13;grid-row:2;aspect-ratio:16/10;align-self:end}
+
+.iletisim{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px}
+.iletisim dl div{display:flex;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid var(--cizgi);font-variant-numeric:tabular-nums}
+.iletisim dl{margin-top:28px;border-top:1px solid var(--cizgi)}
+.iletisim dt{color:var(--ikincil)}
+.iletisim dd{font-weight:500;text-align:right}
+.iletisim address{font-style:normal;margin-top:28px;font-size:20px;max-width:22em}
+.yt{margin-top:14px;font-weight:500}
+.yt a{text-decoration-color:var(--kina);text-decoration-thickness:2px}
+
+.ft{border-top:1px solid var(--cizgi);padding:32px 0 48px;font-size:14.5px;color:var(--ikincil)}
+.ft-in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px 40px}
+.ft strong{font-weight:500;color:var(--murekkep)}
+
+.mbar{display:none}
+@media (max-width:1000px){
+  .hd nav{display:none}
+  .hero-in{grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:40px}
+  .grup,.paket{grid-template-columns:1fr;gap:16px}
+}
+@media (max-width:720px){
+  body{padding-bottom:64px}
+  .wrap{padding:0 20px}
+  .hero{padding:40px 0 64px}
+  .hero-in{grid-template-columns:1fr;gap:0}
+  .btn{width:100%}
+  .hero .foto{aspect-ratio:4/3;margin-top:40px}
+  .bolum{padding:60px 0}
+  .grup ul{columns:1}
+  .galeri{grid-template-columns:1fr 1fr;gap:12px}
+  .galeri .foto:nth-child(n){grid-column:auto;grid-row:auto;margin-top:0;min-height:0;aspect-ratio:1}
+  .galeri .foto:nth-child(1){grid-column:span 2;aspect-ratio:4/3}
+  .galeri .foto:nth-child(5){display:none}
+  .iletisim{grid-template-columns:1fr;gap:48px}
+  .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:50;background:var(--yuzey);border-top:1px solid var(--cizgi)}
+  .mbar a{display:flex;align-items:center;justify-content:center;min-height:56px;font-weight:500;font-size:15px;text-decoration:none}
+  .mbar a+a{border-left:1px solid var(--cizgi)}
+  .mbar a:nth-child(2){background:var(--kina);color:var(--yuzey)}
+}
+@media (prefers-reduced-motion:reduce){.marka{animation:none}}
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "LocalBusiness", "name": "Maya Organizasyon", "telephone": "+905327988717", "address": {"@type": "PostalAddress", "streetAddress": "Bağlıca, Çambayırı Cd. No:118 D:3, 06790 Etimesgut/Ankara", "addressLocality": "Etimesgut", "addressRegion": "Ankara", "addressCountry": "TR"}}</script>
+</head>
+<body>
+<a class="skip" href="#icerik">İçeriğe geç</a>
+<div class="demo-bar" role="note"><b>Tasarım önizlemesi.</b> Görseller örnektir; noktalı çizgiyle işaretli bilgiler yayından önce sizinle birlikte doldurulur.</div>
+
+<header class="hd"><div class="wrap hd-in">
+<a class="hd-ad" href="#icerik">Maya Organizasyon</a>
+<nav aria-label="Sayfa içi"><a href="#hizmetler">Hizmetler</a><a href="#paketler">Paketler</a><a href="#galeri">Galeri</a><a href="#adres">Adres</a></nav>
+</div></header>
+
+<main id="icerik">
+<section class="hero"><div class="wrap hero-in">
+<div>
+<p class="marka">Maya Organizasyon</p>
+<h1>Düğün, kına ve nişan organizasyonu, Bağlıca, Etimesgut</h1>
+<p class="lede">Kına gecesi, nişan, söz ve düğün için süsleme, masa düzeni, ses ve ışık. Teklif; tarihe, kişi sayısına ve mekâna göre verilir.</p>
+<a class="btn" href="https://wa.me/905327988717?text=Merhaba%2C%20Maya%20Organizasyon%20web%20sitesinden%20yaz%C4%B1yorum.%20Organizasyon%20i%C3%A7in%20tarih%20sormak%20istiyorum.">WhatsApp’tan tarih sorun</a>
+<p class="ara">Telefon: <a href="tel:+905327988717">0532 798 87 17</a></p>
+</div>
+<div class="foto" role="img" aria-label="Fotoğraf yeri">Organizasyon fotoğrafı<br>sizden gelecek</div>
+</div></section>
+
+<section class="bolum" id="hizmetler"><div class="wrap">
+<h2>Hizmetler</h2>
+<p class="notu">Liste yayından önce sizin yaptığınız işlere göre düzenlenir.</p>
+<div class="menu">
+
+<div class="grup"><h3>Kına ve nişan</h3><ul><li>Kına gecesi düzeni</li><li>Kına bohçası ve kıyafet</li><li>Nişan ve söz süslemesi</li><li>Tepsi ve hediyelik</li></ul></div>
+<div class="grup"><h3>Düğün</h3><ul><li>Masa ve sahne süsleme</li><li>Gelin girişi</li><li>Ses ve ışık</li><li>Fotoğraf köşesi</li></ul></div>
+<div class="grup"><h3>Diğer davetler</h3><ul><li>Doğum günü</li><li>Sünnet düğünü</li><li>Bebek karşılama</li><li>Açılış</li></ul></div>
+</div>
+</div></section>
+
+<section class="bolum" id="paketler"><div class="wrap paket">
+<div><h2>Paketler</h2><p class="notu">Paket içerikleri ve fiyatları yayından önce sizinle yazılır.</p></div>
+<div>
+<div class="prow"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[Paket adı ve fiyatı]</span></div>
+<div class="prow"><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">[Paket adı ve fiyatı]</span></div>
+</div>
+</div></section>
+
+<section class="bolum" id="galeri"><div class="wrap">
+<h2>Galeri</h2>
+<p class="notu">Fotoğraflar sizden gelir; yalnız kendi çalışmalarınız yer alır.</p>
+<div class="galeri">
+<div class="foto">Fotoğraf yeri</div>
+<div class="foto">Fotoğraf yeri</div>
+<div class="foto">Fotoğraf yeri</div>
+<div class="foto">Fotoğraf yeri</div>
+<div class="foto">Fotoğraf yeri</div>
+</div>
+</div></section>
+
+<section class="bolum" id="adres"><div class="wrap iletisim">
+<div>
+<h2>Saatler</h2>
+<dl>
+<div><dt>Pazartesi-Cumartesi</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">09.00-20.00</span></dd></div>
+<div><dt>Pazar</dt><dd><span class="ph" title="Örnek bilgi, yayından önce doldurulacak">Kapalı</span></dd></div>
+<div><dt>Telefon</dt><dd><a href="tel:+905327988717">0532 798 87 17</a></dd></div>
+<div><dt>WhatsApp</dt><dd><a href="https://wa.me/905327988717?text=Merhaba%2C%20Maya%20Organizasyon%20web%20sitesinden%20yaz%C4%B1yorum.%20Organizasyon%20i%C3%A7in%20tarih%20sormak%20istiyorum.">Mesaj gönderin</a></dd></div>
+</dl>
+</div>
+<div>
+<h2>Adres</h2>
+<address>Bağlıca, Çambayırı Cd. No:118 D:3, 06790 Etimesgut/Ankara</address>
+<p class="yt"><a href="https://www.google.com/maps/place/Maya+Organizasyon-Davet+Evi/data=!4m7!3m6!1s0x14d33b0a8191d1bd:0xbccd4a33c3b03757!8m2!3d39.8933411!4d32.6210081!16s%2Fg%2F11ww4_61g6!19sChIJvdGRgQo70xQRVzewwzNKzbw">Yol tarifi al</a></p>
+</div>
+</div></section>
+</main>
+
+<footer class="ft"><div class="wrap ft-in">
+<p><strong>Maya Organizasyon</strong>, Bağlıca, Etimesgut</p>
+<p>Son güncelleme: 26.11.2026</p>
+</div></footer>
+
+<nav class="mbar" aria-label="Hızlı iletişim"><a href="tel:+905327988717">Ara</a><a href="https://wa.me/905327988717?text=Merhaba%2C%20Maya%20Organizasyon%20web%20sitesinden%20yaz%C4%B1yorum.%20Organizasyon%20i%C3%A7in%20tarih%20sormak%20istiyorum.">WhatsApp</a><a href="https://www.google.com/maps/place/Maya+Organizasyon-Davet+Evi/data=!4m7!3m6!1s0x14d33b0a8191d1bd:0xbccd4a33c3b03757!8m2!3d39.8933411!4d32.6210081!16s%2Fg%2F11ww4_61g6!19sChIJvdGRgQo70xQRVzewwzNKzbw">Yol tarifi al</a></nav>
+</body>
+</html>
